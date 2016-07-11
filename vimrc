@@ -1,38 +1,30 @@
 " Start Pathogen
 execute pathogen#infect()
-syntax on
 syntax enable
 set number
 set background=dark
 colorscheme solarized
 autocmd FileType html,xml,svg,css,scss imap <buffer> <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
-set completeopt=longest,menuone
-imap <Tab>   <plug>vim_completes_me_forward
-imap <S-Tab> <plug>vim_completes_me_backward
 set ignorecase
 set infercase
 set smartcase
 set wildignorecase
 let mapleader = ","
 filetype plugin indent on
-"filetype off
 set shiftwidth=2
 set expandtab
-let g:ctrlp_show_hidden = 1
+let g:ctrlp_show_hidden = 1   " Show hidden files
 set timeoutlen=1000
 set ttimeoutlen=10
-let g:indentLine_char = '¦'
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
-set directory=~/tmp
+set directory=~/tmp           " Save swap files here
+" Go up and down properly in long lines
 nnoremap j gj
 nnoremap k gk
 
 if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
@@ -40,9 +32,8 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-set completeopt+=longest
-
-" Clipboard
+" Use system clipboard
+" NOTE: requires xsel
 set clipboard=unnamedplus
 noremap <Leader>y "*y
 noremap <Leader>p "*p
