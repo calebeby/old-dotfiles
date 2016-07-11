@@ -8,6 +8,7 @@
 - link:
     ~/.vim: vim
     ~/.config/nvim: vim
+    ~/.config/i3: i3
     ~/.vimrc: vimrc
     vim/init.vim:
       path: vimrc
