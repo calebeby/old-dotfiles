@@ -1,1 +1,1 @@
-/home/caleb/dotfiles/vimrc
+/home/manjaro/dotfiles/vimrc
