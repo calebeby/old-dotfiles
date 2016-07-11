@@ -15,6 +15,10 @@
     ~/.bashrc: bashrc
     ~/.gemrc: gemrc
     ~/.zshrc: zshrc
+    ~/.bash_aliases: .bash_aliases
+    ~/.fonts: fonts
+    ~/.gitignore: .gitignore
+    ~/.gitconfig: .gitconfig
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

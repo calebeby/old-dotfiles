@@ -1,0 +1,8 @@
+[user]
+	email = caleb.eby01@gmail.com
+	name = Caleb Eby
+[credential]
+	helper = cache
+[core]
+	editor = nvim
+	excludesfile = ~/.gitignore
