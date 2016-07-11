@@ -1,3 +1,5 @@
+- shell:
+  - [git pull, Downloading updates]
 - defaults:
     link:
       relink: true
