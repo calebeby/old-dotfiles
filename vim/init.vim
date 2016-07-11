@@ -1,1 +1,1 @@
-/home/manjaro/dotfiles/vimrc
+../vimrc

@@ -11,6 +11,7 @@
     ~/.vimrc: vimrc
     vim/init.vim:
       path: vimrc
+      relative: true
       create: false
     ~/.bashrc: bashrc
     ~/.gemrc: gemrc

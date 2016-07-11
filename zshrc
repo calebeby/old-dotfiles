@@ -87,7 +87,7 @@ fi
 export TERM=xterm-256color
 alias vim="nvim"
 alias p="~/Podcasts/bashpodder.sh && ~/Podcasts/speedup.sh"
-alias cat='highlight -O ansi'
+alias cat='fun () {highlight -O ansi -i $1 2>/dev/null || command cat $1;}; fun'
 alias apt-get="sudo apt-get"
 alias dotbot='~/dotfiles/install'
 
