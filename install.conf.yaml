@@ -1,4 +1,5 @@
 - shell:
+  - [git add -A && git commit -am 'automated update', Committing changes]
   - [git pull, Downloading updates]
 - defaults:
     link:
@@ -27,3 +28,4 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [source ~/.zshrc, Sourcing zshrc]
+  - [git push origin master, Uploading changes]
