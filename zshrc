@@ -89,7 +89,7 @@ alias vim="nvim"
 alias p="~/Podcasts/bashpodder.sh && ~/Podcasts/speedup.sh"
 alias cat='fun () {highlight -O ansi -i $1 2>/dev/null || command cat $1;}; fun'
 alias apt-get="sudo apt-get"
-alias dotbot='~/dotfiles/install'
+alias dotbot='~/dotfiles/install -d ~/dotfiles/'
 alias cp='cp --verbose'
 
 lsmod | grep pcspkr && rmmod pcspkr
