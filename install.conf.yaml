@@ -12,6 +12,7 @@
     ~/.vim: vim
     ~/.config/nvim: vim
     ~/.config/i3: i3
+    ~/.config/i3status: i3status
     ~/.vimrc: vimrc
     vim/init.vim:
       path: vimrc
