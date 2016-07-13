@@ -92,8 +92,6 @@ alias apt-get="sudo apt-get"
 alias dotbot='~/dotfiles/install -d ~/dotfiles/'
 alias cp='cp --verbose'
 
-lsmod | grep pcspkr && rmmod pcspkr
-
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # added by travis gem
