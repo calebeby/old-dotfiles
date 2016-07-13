@@ -26,6 +26,7 @@
     ~/.gitignore: .gitignore
     ~/.gitconfig: .gitconfig
     ~/.xinitrc: xinitrc
+    ~/.zprofile: zprofile
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
