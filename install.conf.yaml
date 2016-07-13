@@ -24,6 +24,7 @@
     ~/.fonts: fonts
     ~/.gitignore: .gitignore
     ~/.gitconfig: .gitconfig
+    ~/.xinitrc: xinitrc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
