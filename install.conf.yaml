@@ -1,5 +1,5 @@
 - shell:
-  - [git add -A && git commit -am 'automated update', Committing changes]
+  - [git add -A && git commit -am 'automated update' || echo 'No changes found', Committing changes]
   - [git pull, Downloading updates]
 - defaults:
     link:
