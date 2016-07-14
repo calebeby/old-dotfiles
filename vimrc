@@ -5,6 +5,8 @@ set number
 set background=dark
 colorscheme solarized
 autocmd FileType html,xml,svg,css,scss imap <buffer> <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+" Fixes bug where Vim thinks doctype means html
+autocmd BufNewFile,BufRead *.slim set ft=slim
 set ignorecase
 set infercase
 set smartcase

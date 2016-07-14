@@ -98,4 +98,4 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 # [ -f /home/caleb/.travis/travis.sh ] && source /home/caleb/.travis/travis.sh
 
 #export PATH=$PATH:/usr/local/go/bin
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source $HOME/.rvm/scripts/rvm && . "$HOME/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source $HOME/.rvm/scripts/rvm
