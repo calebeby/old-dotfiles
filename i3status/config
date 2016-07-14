@@ -8,7 +8,7 @@
 
 general {
         colors = true
-        interval = 30
+        interval = 10
 }
 
 #order += "ipv6"
@@ -17,13 +17,13 @@ general {
 #order += "run_watch VPN"
 order += "wireless _first_"
 #order += "ethernet _first_"
-#order += "battery 0"
+order += "battery 0"
 #order += "load"
 order += "tztime local"
 
 wireless _first_ {
-        format_up = "%essid"
-        format_down = "W: down"
+        format_up = "%essid/%quality"
+        format_down = "No Connection"
 }
 
 ethernet _first_ {
@@ -33,7 +33,13 @@ ethernet _first_ {
 }
 
 battery 0 {
-        format = "%status %percentage %remaining"
+        format = "⚡ %status %percentage %remaining %emptytime"
+        status_chr = "CHR"
+        status_bat = "BAT"
+        status_full = "Full"
+        last_full_capacity = true
+        hide_seconds = true
+        integer_battery_capacity = true
 }
 
 run_watch DHCP {
