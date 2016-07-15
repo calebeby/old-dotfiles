@@ -99,3 +99,4 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 #export PATH=$PATH:/usr/local/go/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source $HOME/.rvm/scripts/rvm
+export rvmsudo_secure_path=1
