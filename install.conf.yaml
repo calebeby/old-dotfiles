@@ -32,4 +32,4 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [source ~/.zshrc, Sourcing zshrc]
-  - [git push origin master || echo no changes, Uploading changes]
+  - [git push origin master, Uploading changes]
