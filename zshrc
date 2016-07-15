@@ -91,6 +91,7 @@ alias cat='fun () {highlight -O ansi -i $1 2>/dev/null || command cat $1;}; fun'
 alias apt-get="sudo apt-get"
 alias dotbot='~/dotfiles/install -d ~/dotfiles/'
 alias cp='cp --verbose'
+alias rerun='~/dotfiles/rerun'
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
