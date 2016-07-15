@@ -94,6 +94,7 @@ alias cp='cp --verbose'
 alias rerun='~/dotfiles/rerun'
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export QT_QPA_PLATFORMTHEME="qt5ct"
 
 # added by travis gem
 # [ -f /home/caleb/.travis/travis.sh ] && source /home/caleb/.travis/travis.sh
