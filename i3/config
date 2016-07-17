@@ -2,15 +2,24 @@
 set $mod Mod4
 
 # Font for window titles and bar
-font pango:Source Code Pro 10
+font pango:Source Code Pro, Icons 11
 #font pango:DejaVu Sans Mono 8
 
 assign [class="google-chrome"] 1
 exec --no-startup-id wicd-client --tray
 exec --no-startup-id i3-msg 'workspace 1; exec --no-startup-id google-chrome-stable; workspace 2; exec --no-startup-id xfce4-terminal'
+exec --no-startup-id dunst
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+bindsym XF86AudioMute exec amixer -q set Master toggle
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
@@ -129,7 +138,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
   separator_symbol " "
-  status_command i3blocks
+  status_command i3status
 	position top
   colors {
     separator #586e75
