@@ -8,17 +8,17 @@
 
 general {
         colors = true
-        interval = 10
+        interval = 2
 }
 
 #order += "ipv6"
 #order += "disk /"
 #order += "run_watch DHCP"
 #order += "run_watch VPN"
-order += "wireless _first_"
 #order += "ethernet _first_"
 order += "battery 0"
 #order += "load"
+order += "wireless _first_"
 order += "tztime local"
 
 wireless _first_ {
@@ -34,8 +34,9 @@ ethernet _first_ {
 
 battery 0 {
         format = "⚡ %status %percentage %remaining %emptytime"
-        status_chr = "CHR"
-        status_bat = "BAT"
+        format_down = ""
+        status_chr = "Charged"
+        status_bat = "Battery"
         status_full = "Full"
         last_full_capacity = true
         hide_seconds = true
