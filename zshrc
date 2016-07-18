@@ -84,6 +84,8 @@ export EDITOR='nvim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+xset -b
+
 export TERM=xterm-256color
 alias vim="nvim"
 alias p="~/Podcasts/bashpodder.sh && ~/Podcasts/speedup.sh"
@@ -96,6 +98,7 @@ alias rerun='~/dotfiles/rerun'
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:/usr/local/bin"
 export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_STYLE_OVERRIDE='gtk'
 
 # added by travis gem
 # [ -f /home/caleb/.travis/travis.sh ] && source /home/caleb/.travis/travis.sh
