@@ -89,6 +89,7 @@ xset -b
 export TERM=xterm-256color
 alias vim="nvim"
 alias p="~/Podcasts/bashpodder.sh && ~/Podcasts/speedup.sh"
+alias t="~/Podcasts/transfer.sh"
 alias cat='fun () {highlight -O ansi -i $1 2>/dev/null || command cat $1;}; fun'
 alias apt-get="sudo apt-get"
 alias dotbot='~/dotfiles/install -d ~/dotfiles/'
