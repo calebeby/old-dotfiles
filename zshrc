@@ -95,6 +95,7 @@ alias apt-get="sudo apt-get"
 alias dotbot='~/dotfiles/install -d ~/dotfiles/'
 alias cp='cp --verbose'
 alias rerun='~/dotfiles/rerun'
+alias ls='ls -v --color=tty'
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:/usr/local/bin"
