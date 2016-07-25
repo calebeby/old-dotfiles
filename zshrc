@@ -96,6 +96,7 @@ alias dotbot='~/dotfiles/install -d ~/dotfiles/'
 alias cp='cp --verbose'
 alias rerun='~/dotfiles/rerun'
 alias ls='ls -v --color=tty'
+alias busy="cat /dev/urandom | hexdump -C | ag --color 'ce e'"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:/usr/local/bin"

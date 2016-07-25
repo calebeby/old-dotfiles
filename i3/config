@@ -18,8 +18,8 @@ bindsym XF86AudioLowerVolume exec "amixer -q set Master 2dB- unmute && amixer -q
 bindsym XF86AudioMute exec "amixer -q set Master toggle"
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 3 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 3 # decrease screen brightness
 
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
