@@ -26,6 +26,10 @@ set directory=~/tmp           " Save swap files here
 nnoremap j gj
 nnoremap k gk
 
+" Align GitHub-flavored Markdown tables
+au FileType markdown vmap <Bslash> :EasyAlign*<Bar><Enter>
+au FileType markdown vmap <tab> :EasyAlign*<Bar><Enter>
+
 if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
@@ -42,6 +46,12 @@ noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
 let g:vcm_default_maps = 0
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " Characters for Airline:
 let g:airline_powerline_fonts = 1
