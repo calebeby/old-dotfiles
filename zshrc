@@ -90,7 +90,7 @@ alias cp='cp --verbose'
 alias rerun='~/dotfiles/rerun'
 alias ls='ls -v --color=tty'
 alias busy="cat /dev/urandom | hexdump -C | ag --color 'ce e'"
-alias mm="middleman"
+alias mm="bundle exec middleman"
 alias gs="git status"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
