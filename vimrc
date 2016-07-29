@@ -9,14 +9,18 @@ set number
 set background=dark
 colorscheme solarized
 
-" Use emmet for tab in xml, html, css, etc. files
-autocmd FileType html,xml,svg,css,scss imap <buffer> <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+" Use emmet for tab in xml, html, etc. files
+autocmd FileType html,xml,svg imap <buffer> <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " Fixes bug where Vim thinks doctype means html
 autocmd BufNewFile,BufRead *.slim set ft=slim
 
 " Close vim if there are no more buffers open
 :autocmd BufDelete * if len(filter(range(1, bufnr('$')), '!empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
+
+
+" In completion, include dashes
+set iskeyword+=-
 
 set ignorecase
 set infercase
