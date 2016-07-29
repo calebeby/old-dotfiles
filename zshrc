@@ -92,6 +92,7 @@ alias busy="cat /dev/urandom | hexdump -C | ag --color 'ce e'"
 alias mm="bundle exec middleman"
 alias gs="git status"
 alias e="if [ -s Session.vim ] ; then; nvim -S; else; nvim; fi"
+alias b='sudo halt -p'
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:/usr/local/bin"

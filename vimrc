@@ -1,38 +1,67 @@
 " Start Pathogen
 execute pathogen#infect()
 syntax enable
+
+" <- Show numbers
 set number
+
+" Colors
 set background=dark
 colorscheme solarized
+
+" Use emmet for tab in xml, html, css, etc. files
 autocmd FileType html,xml,svg,css,scss imap <buffer> <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
 " Fixes bug where Vim thinks doctype means html
 autocmd BufNewFile,BufRead *.slim set ft=slim
+
+" Close vim if there are no more buffers open
+:autocmd BufDelete * if len(filter(range(1, bufnr('$')), '!empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
+
 set ignorecase
 set infercase
 set smartcase
 set wildignorecase
+
 let mapleader = ","
+
 filetype plugin indent on
+
 set shiftwidth=2
+
 set expandtab
+
 let g:ctrlp_show_hidden = 1   " Show hidden files
+
 set timeoutlen=1000
 set ttimeoutlen=10
+
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
+
 set directory=~/tmp           " Save swap files here
+
 " Go up and down properly in long lines
 nnoremap j gj
 nnoremap k gk
+
+" No more arrow keys!
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-" Align GitHub-flavored Markdown tables
+" Align markdown tables with bar or tab
 au FileType markdown vmap <Bslash> :EasyAlign*<Bar><Enter>
 au FileType markdown vmap <tab> :EasyAlign*<Bar><Enter>
+
+" Complete properly
+au FileType php setl ofu=phpcomplete#CompletePHP
+au FileType ruby,eruby setl ofu=rubycomplete#Complete
+au FileType slim,html,xhtml setl ofu=htmlcomplete#CompleteTags
+au FileType c setl ofu=ccomplete#CompleteCpp
+au FileType scss,sass,css setl ofu=csscomplete#CompleteCSS
 
 if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
@@ -71,9 +100,7 @@ set t_Co=256
 set linespace=0
 set pastetoggle=<F2>
 
-" Close vim if there are no more buffers open
-:autocmd BufDelete * if len(filter(range(1, bufnr('$')), '!empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
-
+" use vim-commentary with slim
 autocmd FileType slim setlocal commentstring=//%s
 
 " Tab Width
@@ -85,17 +112,13 @@ let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-" This allows buffers to be hidden if you've modified a buffer.
-" This is almost a must if you wish to use buffers in this way.
+" Go to other buffers, even with unsaved work
 set hidden
 
 " Open a new file in a new buffer
 nmap <C-t> :CtrlP<F5><CR>
 vmap <C-t> <Esc><C-t>gv
 imap <C-t> <Esc><C-t>
-nmap <C-o> :CtrlP<F5><CR>
-vmap <C-o> <Esc><C-o>gv
-imap <C-o> <Esc><C-o>
 
 " Move to the next buffer
 nmap <C-right> :bnext<CR>
@@ -117,9 +140,10 @@ nmap <c-w> :up \| :bd<CR>
 vmap <c-w> <Esc><c-w>
 imap <c-w> <Esc><c-w>
 
+" in markdown files look up suggestions in the dictionary
 autocmd FileType text,markdown let b:vcm_tab_complete = 'dict'
 
-" air-line
+" airline
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
