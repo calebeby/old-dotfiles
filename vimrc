@@ -25,6 +25,10 @@ set directory=~/tmp           " Save swap files here
 " Go up and down properly in long lines
 nnoremap j gj
 nnoremap k gk
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
 " Align GitHub-flavored Markdown tables
 au FileType markdown vmap <Bslash> :EasyAlign*<Bar><Enter>

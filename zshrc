@@ -80,7 +80,6 @@ export EDITOR='nvim'
 xset -b
 
 export TERM=xterm-256color
-alias vim="nvim"
 alias p="~/Podcasts/bashpodder.sh && ~/Podcasts/speedup.sh"
 alias t="~/Podcasts/transfer.sh"
 alias cat='fun () {highlight -O ansi -i $1 2>/dev/null || command cat $1;}; fun'
@@ -92,6 +91,7 @@ alias ls='ls -v --color=tty'
 alias busy="cat /dev/urandom | hexdump -C | ag --color 'ce e'"
 alias mm="bundle exec middleman"
 alias gs="git status"
+alias e="if [ -s Session.vim ] ; then; nvim -S; else; nvim; fi"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:/usr/local/bin"
