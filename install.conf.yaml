@@ -29,6 +29,7 @@
     ~/.xinitrc: xinitrc
     ~/.zprofile: zprofile
     ~/.oh-my-zsh/custom/themes/calebeby.zsh-theme: calebeby.zsh-theme
+    ~/.agignore: agignore
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
