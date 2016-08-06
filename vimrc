@@ -10,7 +10,7 @@ set background=dark
 colorscheme solarized
 
 " Use emmet for tab in xml, html, etc. files
-autocmd FileType html,xml,svg,css,scss,sass imap <buffer> <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+autocmd FileType html,svg,css,scss,sass imap <buffer> <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " Fixes bug where Vim thinks doctype means html
 autocmd BufNewFile,BufRead *.slim set ft=slim
