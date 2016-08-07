@@ -30,6 +30,7 @@
     ~/.zprofile: zprofile
     ~/.oh-my-zsh/custom/themes/calebeby.zsh-theme: calebeby.zsh-theme
     ~/.agignore: agignore
+    ~/.tmux.conf: tmux.conf
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
