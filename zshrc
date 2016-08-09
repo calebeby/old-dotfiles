@@ -94,6 +94,7 @@ alias gs="git status"
 alias e="if [ -s Session.vim ] ; then; nvim -S; else; nvim; fi"
 alias b='sudo halt -p'
 alias ag='ag --path-to-agignore ~/.agignore'
+alias work='tmux attach -t'
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:/usr/local/bin"
