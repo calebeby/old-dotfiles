@@ -150,5 +150,29 @@ autocmd FileType text,markdown let b:vcm_tab_complete = 'dict'
 " airline
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+  let g:airline_symbols = {}
 endif
+
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+
+" Spell-check Markdown files
+autocmd FileType markdown setlocal spell
+
+" Spell-check Git messages
+autocmd FileType gitcommit setlocal spell
+
+" Set spellfile to location that is guaranteed to exist,
+" can be symlinked to Dropbox or kept in Git
+" and managed outside of thoughtbot/dotfiles using rcm.
+set spellfile=$HOME/.vim-spell-en.utf-8.add
+
+" Autocomplete with dictionary words when spell check is on
+set complete+=kspell
+
+" use thin cursor in insert mode
+if has("nvim")
+  au InsertEnter * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_BLOCK/TERMINAL_CURSOR_SHAPE_UNDERLINE/' ~/.config/xfce4/terminal/terminalrc"
+  au InsertLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"
+  au VimLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"  
+endif
+

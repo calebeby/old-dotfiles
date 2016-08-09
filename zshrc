@@ -108,3 +108,4 @@ export QT_STYLE_OVERRIDE='gtk'
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source $HOME/.rvm/scripts/rvm
 export rvmsudo_secure_path=1
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
