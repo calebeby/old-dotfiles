@@ -52,3 +52,6 @@
 [submodule "tmux-resurrect"]
 	path = tmux-resurrect
 	url = https://github.com/tmux-plugins/tmux-resurrect
+[submodule "tmux-yank"]
+	path = tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank

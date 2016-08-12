@@ -170,9 +170,14 @@ set spellfile=$HOME/.vim-spell-en.utf-8.add
 set complete+=kspell
 
 " use thin cursor in insert mode
-if has("nvim")
-  au InsertEnter * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_BLOCK/TERMINAL_CURSOR_SHAPE_UNDERLINE/' ~/.config/xfce4/terminal/terminalrc"
-  au InsertLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"
-  au VimLeave * silent execute "!sed -i.bak -e 's/TERMINAL_CURSOR_SHAPE_UNDERLINE/TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"  
-endif
+" if has("autocmd")
+"   au InsertEnter * silent execute "!print -n -- '\033[1 q'"
+"   au InsertLeave * silent execute "!print -n -- '\033[3 q'"
+"   au VimLeave * silent execute "!print -n -- '\033[5 q'"
+" endif
 
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
+
+let &t_SI = "\<esc>[5 q"
+let &t_SR = "\<esc>[5 q"
+let &t_EI = "\<esc>[2 q"

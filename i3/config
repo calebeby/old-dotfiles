@@ -7,7 +7,7 @@ font pango:Source Code Pro, Icons 11
 
 assign [class="google-chrome"] 1
 exec --no-startup-id wicd-client --tray
-exec --no-startup-id i3-msg 'workspace 1; exec --no-startup-id google-chrome-stable; workspace 2; exec --no-startup-id xfce4-terminal'
+exec --no-startup-id i3-msg 'workspace 1; exec --no-startup-id google-chrome-stable; workspace 2; exec --no-startup-id urxvt'
 exec --no-startup-id dunst
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -22,7 +22,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 3 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 3 # decrease screen brightness
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill

@@ -96,10 +96,37 @@ alias b='sudo halt -p'
 alias ag='ag --path-to-agignore ~/.agignore'
 alias work='tmux attach -t'
 
+# apt-get() {
+#   echo $@
+
+#   if [[ $0 == 'sudo' ]]; then
+
+#     1=$2
+#     2=$3
+
+#   fi
+
+#   if [[ $1 == "install" ]]; then
+
+#     yaourt -S $2
+
+#   elif [[ $1 == "update" ]] || [[ $1 == "upgrade" ]] ; then
+
+#     yaourt -Syu
+
+#   else
+
+#     echo command not found: $1
+
+#   fi
+
+# }
+
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:/usr/local/bin"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export QT_STYLE_OVERRIDE='gtk'
+# export NVIM_TUI_ENABLE_CURSOR_SHAPE='1'
 
 # added by travis gem
 # [ -f /home/caleb/.travis/travis.sh ] && source /home/caleb/.travis/travis.sh
@@ -109,3 +136,4 @@ export QT_STYLE_OVERRIDE='gtk'
 export rvmsudo_secure_path=1
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+[ -f ~/.Xresources ] && xrdb ~/.Xresources
