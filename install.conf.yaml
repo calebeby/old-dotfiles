@@ -1,6 +1,11 @@
 - shell:
-  - [git add -A && git commit -am 'automated update' || echo 'No changes found', Committing changes]
-  - [git pull, Downloading updates]
+  -
+    command: git add -A && git commit -am 'automated update'
+    stdout: true
+  - 
+    command: git pull
+    stdout: true
+
 - defaults:
     link:
       relink: true
@@ -34,5 +39,9 @@
     ~/.Xresources: Xresources
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
-  - [git push origin master, Uploading changes]
+  -
+    command: git submodule update --init --recursive
+    stdout: true
+  - 
+    command: git push origin master
+    stdout: true
