@@ -1,9 +1,8 @@
 " Start Pathogen
 execute pathogen#infect()
-syntax enable
 
-" <- Show numbers
-set number
+" use syntax detection/highlighting
+syntax enable
 
 " Colors
 set background=dark
@@ -29,35 +28,45 @@ set wildignorecase
 
 let mapleader = ","
 
+" use different indents in different filetypes
 filetype plugin indent on
 
+" default tab width
 set shiftwidth=2
 
 set expandtab
 
-let g:ctrlp_show_hidden = 1   " Show hidden files
+" Show hidden files
+let g:ctrlp_show_hidden = 1
 
+" times for leader commands
 set timeoutlen=1000
 set ttimeoutlen=10
 
+" don't mess with my markdown
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
 
-set directory=~/tmp           " Save swap files here
+" Save swap files here
+set directory=~/tmp
 
 " Go up and down properly in long lines
 nnoremap j gj
 nnoremap k gk
 
-" No more arrow keys!
+" No arrow keys in normal and insert
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-" Align markdown tables with bar or tab
-au FileType markdown vmap <Bslash> :EasyAlign*<Bar><Enter>
+imap <up> <NOP>
+imap <down> <NOP>
+imap <left> <NOP>
+imap <right> <NOP>
+
+" Align markdown tables with tab
 au FileType markdown vmap <tab> :EasyAlign*<Bar><Enter>
 
 " Complete properly
@@ -68,21 +77,20 @@ au FileType c setl ofu=ccomplete#CompleteCpp
 au FileType scss,sass,css setl ofu=csscomplete#CompleteCSS
 
 if executable('ag')
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  " Use ag in CtrlP for listing files
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
-  " ag is fast enough that CtrlP doesn't need to cache
+  " Don't cache results
   let g:ctrlp_use_caching = 0
 endif
 
 " Use system clipboard
-" NOTE: requires xsel
+" requires xsel
 set clipboard=unnamedplus
 noremap <Leader>y "*y
 noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
-let g:vcm_default_maps = 0
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -90,13 +98,10 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-" Characters for Airline:
+" use fancy characters
 let g:airline_powerline_fonts = 1
 
-" Allow us to use Ctrl-s and Ctrl-q as keybinds
-"silent !stty -ixon
-
-" Make subsitutions apply more than one per line default
+" subsitute more than once per line
 set gdefault
 
 set laststatus=2
@@ -144,9 +149,6 @@ nmap <c-w> :up \| :bd<CR>
 vmap <c-w> <Esc><c-w>
 imap <c-w> <Esc><c-w>
 
-" in markdown files look up suggestions in the dictionary
-autocmd FileType text,markdown let b:vcm_tab_complete = 'dict'
-
 " airline
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
@@ -155,29 +157,18 @@ endif
 
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 
-" Spell-check Markdown files
-autocmd FileType markdown setlocal spell
-
-" Spell-check Git messages
-autocmd FileType gitcommit setlocal spell
-
-" Set spellfile to location that is guaranteed to exist,
-" can be symlinked to Dropbox or kept in Git
-" and managed outside of thoughtbot/dotfiles using rcm.
-set spellfile=$HOME/.vim-spell-en.utf-8.add
+" Spell-check Markdown and git commits
+autocmd FileType markdown,gitcommit setlocal spell
 
 " Autocomplete with dictionary words when spell check is on
 set complete+=kspell
+set spellfile=$HOME/.vim-spell-en.utf-8.add
 
-" use thin cursor in insert mode
-" if has("autocmd")
-"   au InsertEnter * silent execute "!print -n -- '\033[1 q'"
-"   au InsertLeave * silent execute "!print -n -- '\033[3 q'"
-"   au VimLeave * silent execute "!print -n -- '\033[5 q'"
-" endif
-
+" Change cursor shape on entering insert or replace mode
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
-
 let &t_SI = "\<esc>[5 q"
 let &t_SR = "\<esc>[5 q"
 let &t_EI = "\<esc>[2 q"
+
+" Show relative numbers
+set relativenumber
