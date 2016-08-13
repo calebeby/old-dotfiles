@@ -172,3 +172,4 @@ let &t_EI = "\<esc>[2 q"
 
 " Show relative numbers
 set relativenumber
+

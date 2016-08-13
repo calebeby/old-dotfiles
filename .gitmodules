@@ -58,3 +58,12 @@
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround
+[submodule "tmux-continuum"]
+	path = tmux-continuum
+	url = https://github.com/tmux-plugins/tmux-continuum
+[submodule "vim-endwise"]
+	path = vim-endwise
+	url = https://github.com/tpope/vim-endwise
+[submodule "delimitMate"]
+	path = delimitMate
+	url = https://github.com/Raimondi/delimitMate
