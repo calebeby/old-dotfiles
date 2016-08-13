@@ -175,3 +175,7 @@ set relativenumber
 
 " clear search
 nnoremap <esc> :noh<return><esc>
+
+" split right and below instead of left and up
+set splitbelow
+set splitright
