@@ -37,6 +37,8 @@
     ~/.agignore: agignore
     ~/.tmux.conf: tmux.conf
     ~/.Xresources: Xresources
+    ~/.emacs: emacs
+    ~/.emacs.d: emacs.d
 
 - shell:
   -
