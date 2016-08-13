@@ -78,7 +78,7 @@ au FileType scss,sass,css setl ofu=csscomplete#CompleteCSS
 
 if executable('ag')
   " Use ag in CtrlP for listing files
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
   " Don't cache results
   let g:ctrlp_use_caching = 0

@@ -93,7 +93,7 @@ alias mm="bundle exec middleman"
 alias gs="git status"
 alias e="if [ -s Session.vim ] ; then; nvim -S; else; nvim; fi"
 alias b='sudo halt -p'
-alias ag='ag --path-to-agignore ~/.agignore'
+alias ag='ag --path-to-agignore ~/.agignore --hidden'
 alias work='tmux attach -t'
 
 # apt-get() {
@@ -127,9 +127,6 @@ export PATH="$PATH:/usr/local/bin"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export QT_STYLE_OVERRIDE='gtk'
 # export NVIM_TUI_ENABLE_CURSOR_SHAPE='1'
-
-# added by travis gem
-# [ -f /home/caleb/.travis/travis.sh ] && source /home/caleb/.travis/travis.sh
 
 #export PATH=$PATH:/usr/local/go/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source $HOME/.rvm/scripts/rvm
