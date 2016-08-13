@@ -131,6 +131,6 @@ export QT_STYLE_OVERRIDE='gtk'
 #export PATH=$PATH:/usr/local/go/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source $HOME/.rvm/scripts/rvm
 export rvmsudo_secure_path=1
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [ -f ~/.Xresources ] && xrdb ~/.Xresources
