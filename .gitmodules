@@ -67,3 +67,6 @@
 [submodule "delimitMate"]
 	path = delimitMate
 	url = https://github.com/Raimondi/delimitMate
+[submodule "vim-tmux-navigator"]
+	path = vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator
