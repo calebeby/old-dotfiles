@@ -6,3 +6,5 @@
 [core]
 	editor = nvim
 	excludesfile = ~/.gitignore
+[hub]
+	protocol = https
