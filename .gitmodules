@@ -70,3 +70,9 @@
 [submodule "vim-tmux-navigator"]
 	path = vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator
+[submodule "emacs.d/themes/emacs-color-theme-solarized"]
+	path = emacs.d/themes/emacs-color-theme-solarized
+	url = https://github.com/sellout/emacs-color-theme-solarized
+[submodule "spacemacs"]
+	path = spacemacs
+	url = https://github.com/syl20bnr/spacemacs
