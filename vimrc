@@ -81,7 +81,7 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
   " Don't cache results
-  let g:ctrlp_use_caching = 0
+  " let g:ctrlp_use_caching = 0
 endif
 
 " Use system clipboard
@@ -179,3 +179,7 @@ nnoremap <esc> :noh<return><esc>
 " split right and below instead of left and up
 set splitbelow
 set splitright
+
+if has('nvim')
+  nmap <bs> :<c-u>TmuxNavigateLeft<cr>
+endif
