@@ -90,37 +90,11 @@ alias rerun='~/dotfiles/rerun'
 alias ls='ls -v --color=tty'
 alias busy="cat /dev/urandom | hexdump -C | ag --color 'ce e'"
 alias mm="bundle exec middleman"
-alias gs="git status"
+alias gs="hub status"
 alias e="if [ -s Session.vim ] ; then; nvim -S; else; nvim; fi"
 alias b='sudo halt -p'
 alias ag='ag --path-to-agignore ~/.agignore --hidden'
 alias work='tmux attach -t'
-
-# apt-get() {
-#   echo $@
-
-#   if [[ $0 == 'sudo' ]]; then
-
-#     1=$2
-#     2=$3
-
-#   fi
-
-#   if [[ $1 == "install" ]]; then
-
-#     yaourt -S $2
-
-#   elif [[ $1 == "update" ]] || [[ $1 == "upgrade" ]] ; then
-
-#     yaourt -Syu
-
-#   else
-
-#     echo command not found: $1
-
-#   fi
-
-# }
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:/usr/local/bin"
@@ -132,8 +106,6 @@ export QT_STYLE_OVERRIDE='gtk'
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source $HOME/.rvm/scripts/rvm
 export rvmsudo_secure_path=1
 [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-[ -f ~/.Xresources ] && xrdb ~/.Xresources
 
 alias g='hub'
 
@@ -194,7 +166,7 @@ alias gg='hub gui citool'
 alias gga='hub gui citool --amend'
 
 ggf() {
-  [[ "$#" != 1 ]] && local b="$(hub_current_branch)"
+  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
   hub push --force origin "${b:=$1}"
 }
 compdef _hub ggf=hub-checkout
@@ -203,7 +175,7 @@ ggl() {
   if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
     hub pull origin "${*}"
   else
-    [[ "$#" == 0 ]] && local b="$(hub_current_branch)"
+    [[ "$#" == 0 ]] && local b="$(git_current_branch)"
     hub pull origin "${b:=$1}"
   fi
 }
@@ -213,7 +185,7 @@ ggp() {
   if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
     hub push origin "${*}"
   else
-    [[ "$#" == 0 ]] && local b="$(hub_current_branch)"
+    [[ "$#" == 0 ]] && local b="$(git_current_branch)"
     hub push origin "${b:=$1}"
   fi
 }
@@ -229,7 +201,7 @@ ggpnp() {
 compdef _hub ggpnp=hub-checkout
 
 ggu() {
-  [[ "$#" != 1 ]] && local b="$(hub_current_branch)"
+  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
   hub pull --rebase origin "${b:=$1}"
 }
 compdef _hub ggu=hub-checkout
@@ -237,19 +209,19 @@ compdef _hub ggu=hub-checkout
 alias ggpur='ggu'
 compdef _hub ggpur=hub-checkout
 
-alias ggpull='hub pull origin $(hub_current_branch)'
+alias ggpull='hub pull origin $(git_current_branch)'
 compdef _hub ggpull=hub-checkout
 
-alias ggpush='hub push origin $(hub_current_branch)'
+alias ggpush='hub push origin $(git_current_branch)'
 compdef _hub ggpush=hub-checkout
 
-alias ggsup='hub branch --set-upstream-to=origin/$(hub_current_branch)'
+alias ggsup='hub branch --set-upstream-to=origin/$(git_current_branch)'
 
-alias gpsup='hub push --set-upstream origin $(hub_current_branch)'
+alias gpsup='hub push --set-upstream origin $(git_current_branch)'
 
 alias gignore='hub update-index --assume-unchanged'
 alias gignored='hub ls-files -v | grep "^[[:lower:]]"'
-alias hub-svn-dcommit-push='hub svn dcommit && hub push hubhub master:svntrunk'
+alias hub-svn-dcommit-push='hub svn dcommit && hub push github master:svntrunk'
 compdef hub-svn-dcommit-push=hub
 
 alias gk='\hubk --all --branches'
@@ -328,3 +300,10 @@ alias glum='hub pull upstream master'
 
 alias gwch='hub whatchanged -p --abbrev-commit --pretty=medium'
 alias gwip='hub add -A; hub rm $(hub ls-files --deleted) 2> /dev/null; hub commit -m "--wip--"'
+
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down

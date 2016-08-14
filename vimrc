@@ -130,14 +130,14 @@ vmap <C-t> <Esc><C-t>gv
 imap <C-t> <Esc><C-t>
 
 " Move to the next buffer
-nmap <C-right> :bnext<CR>
-vmap <C-right> <Esc><C-right>gv
-imap <C-right> <Esc><C-right>
+nmap <C-l> :bnext<CR>
+vmap <C-l> <Esc><C-l>gv
+imap <C-l> <Esc><C-l>
 
 " Move to the previous buffer
-nmap <C-left> :bprevious<CR>
-vmap <C-left> <Esc><C-left>gv
-imap <C-left> <Esc><C-left>
+nmap <C-h> :bprevious<CR>
+vmap <C-h> <Esc><C-h>gv
+imap <C-h> <Esc><C-h>
 
 " Save file
 nmap <c-s> :up<CR>
