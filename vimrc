@@ -129,15 +129,15 @@ nmap <C-t> :CtrlP<F5><CR>
 vmap <C-t> <Esc><C-t>gv
 imap <C-t> <Esc><C-t>
 
-" Move to the next buffer
-nmap <C-l> :bnext<CR>
-vmap <C-l> <Esc><C-l>gv
-imap <C-l> <Esc><C-l>
+" " Move to the next buffer
+" nmap <C-l> :bnext<CR>
+" vmap <C-l> <Esc><C-l>gv
+" imap <C-l> <Esc><C-l>
 
-" Move to the previous buffer
-nmap <C-h> :bprevious<CR>
-vmap <C-h> <Esc><C-h>gv
-imap <C-h> <Esc><C-h>
+" " Move to the previous buffer
+" nmap <C-h> :bprevious<CR>
+" vmap <C-h> <Esc><C-h>gv
+" imap <C-h> <Esc><C-h>
 
 " Save file
 nmap <c-s> :up<CR>
