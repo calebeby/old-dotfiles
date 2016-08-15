@@ -132,16 +132,24 @@ vmap <c-w> <Esc><c-w>
 imap <c-w> <Esc><c-w>
 
 set hidden
-nnoremap <C-N> :bnext<CR>
-nnoremap <C-M> :bprev<CR>
+nnoremap <C-M> :bnext<CR>
+nnoremap <C-N> :bprev<CR>
+
+function! Current_git_branch()
+    let l:branch = split(fugitive#statusline(),'[()]')
+    if len(l:branch) > 1
+         return remove(l:branch, 1)
+    endif
+    return ""
+endfunction
 
 let g:lightline = {
 \ 'colorscheme': 'solarized',
 \ 'active': {
 \   'left': [
 \     [ 'mode', 'paste' ],
-\     [ 'filename' ],
-\     [ 'ctrlpmark' ]
+\     [ 'filename', 'branch' ],
+\     [ 'ctrlpmark' ],
 \    ],
 \   'right': [
 \     [ 'syntastic', 'lineinfo' ],
@@ -157,6 +165,12 @@ let g:lightline = {
 \   'mode': 'LightLineMode',
 \   'ctrlpmark': 'CtrlPMark',
 \ },
+\ 'component': {
+\   'branch': ' %{Current_git_branch()}',
+\ },
+\ 'component_visible_condition': {
+\   'branch': '(Current_git_branch()!="")'
+\ },
 \ 'component_expand': {
 \   'syntastic': 'SyntasticStatuslineFlag',
 \ },
@@ -164,7 +178,7 @@ let g:lightline = {
 \   'syntastic': 'error',
 \ },
 \ 'separator': { 'left': '', 'right': '' },
-\ 'subseparator': { 'left': '', 'right': '' }
+\ 'subseparator': { 'left': '', 'right': '' },
 \}
 
 function! LightLineModified()
