@@ -91,6 +91,25 @@ noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
 
+" fugitive git bindings
+nnoremap <space>ga :Git add %:p<CR><CR>
+nnoremap <space>gs :Gstatus<CR>
+nnoremap <space>gc :Gcommit -v -q<CR>
+nnoremap <space>gt :Gcommit -v -q %:p<CR>
+nnoremap <space>gd :Gdiff<CR>
+nnoremap <space>ge :Gedit<CR>
+nnoremap <space>gr :Gread<CR>
+nnoremap <space>gw :Gwrite<CR><CR>
+nnoremap <space>gbl :Gblame<CR><CR>
+" nnoremap <space>gl :silent! Glog<CR>:bot copen<CR>
+nnoremap <space>gp :Ggrep<Space>
+nnoremap <space>gm :Gmove<Space>
+nnoremap <space>gb :Git branch<Space>
+nnoremap <space>go :Git checkout<Space>
+nnoremap <space>gps :Dispatch! git push<CR>
+nnoremap <space>gp :Dispatch! git push<CR>
+nnoremap <space>gpl :Dispatch! git pull<CR>
+nnoremap <space>gl :Dispatch! git pull<CR>
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 
@@ -142,6 +161,12 @@ function! Current_git_branch()
     endif
     return ""
 endfunction
+
+let g:buftabline_indicators = 1
+hi BufTabLineCurrent ctermfg=14 ctermbg=0 cterm=bold
+hi BufTabLineHidden ctermfg=10 ctermbg=8 cterm=NONE
+hi BufTabLineFill ctermfg=8 ctermbg=8 cterm=NONE
+hi BufTabLineActive ctermfg=14 ctermbg=8 cterm=bold
 
 let g:lightline = {
 \ 'colorscheme': 'solarized',
