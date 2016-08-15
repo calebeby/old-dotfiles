@@ -124,6 +124,8 @@ nmap <c-s> :up<CR>
 vmap <c-s> <Esc>:up<CR>gv
 imap <c-s> <Esc>:up<CR>a
 
+nnoremap <C-Q> <C-W>
+
 " Close file
 nmap <c-w> :up \| :bd<CR>
 vmap <c-w> <Esc><c-w>
@@ -131,7 +133,7 @@ imap <c-w> <Esc><c-w>
 
 set hidden
 nnoremap <C-N> :bnext<CR>
-nnoremap <C-P> :bprev<CR>
+nnoremap <C-M> :bprev<CR>
 
 let g:lightline = {
 \ 'colorscheme': 'solarized',
