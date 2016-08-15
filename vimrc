@@ -17,7 +17,6 @@ autocmd BufNewFile,BufRead *.slim set ft=slim
 " Close vim if there are no more buffers open
 :autocmd BufDelete * if len(filter(range(1, bufnr('$')), '!empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
 
-
 " In completion, include dashes
 set iskeyword+=-
 
@@ -98,9 +97,6 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-" use fancy characters
-let g:airline_powerline_fonts = 1
-
 " subsitute more than once per line
 set gdefault
 
@@ -115,12 +111,6 @@ autocmd FileType slim setlocal commentstring=//%s
 " Tab Width
 set tabstop=2
 
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-
 " Go to other buffers, even with unsaved work
 set hidden
 
@@ -128,16 +118,6 @@ set hidden
 nmap <C-t> :CtrlP<F5><CR>
 vmap <C-t> <Esc><C-t>gv
 imap <C-t> <Esc><C-t>
-
-" " Move to the next buffer
-" nmap <C-l> :bnext<CR>
-" vmap <C-l> <Esc><C-l>gv
-" imap <C-l> <Esc><C-l>
-
-" " Move to the previous buffer
-" nmap <C-h> :bprevious<CR>
-" vmap <C-h> <Esc><C-h>gv
-" imap <C-h> <Esc><C-h>
 
 " Save file
 nmap <c-s> :up<CR>
@@ -149,11 +129,107 @@ nmap <c-w> :up \| :bd<CR>
 vmap <c-w> <Esc><c-w>
 imap <c-w> <Esc><c-w>
 
-" airline
-let g:airline_powerline_fonts = 1
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
+set hidden
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-P> :bprev<CR>
+
+let g:lightline = {
+\ 'colorscheme': 'solarized',
+\ 'active': {
+\   'left': [
+\     [ 'mode', 'paste' ],
+\     [ 'filename' ],
+\     [ 'ctrlpmark' ]
+\    ],
+\   'right': [
+\     [ 'syntastic', 'lineinfo' ],
+\     [ 'percent' ],
+\     [ 'fileformat', 'fileencoding', 'filetype' ]
+\   ]
+\ },
+\ 'component_function': {
+\   'filename': 'LightLineFilename',
+\   'fileformat': 'LightLineFileformat',
+\   'filetype': 'LightLineFiletype',
+\   'fileencoding': 'LightLineFileencoding',
+\   'mode': 'LightLineMode',
+\   'ctrlpmark': 'CtrlPMark',
+\ },
+\ 'component_expand': {
+\   'syntastic': 'SyntasticStatuslineFlag',
+\ },
+\ 'component_type': {
+\   'syntastic': 'error',
+\ },
+\ 'separator': { 'left': '', 'right': '' },
+\ 'subseparator': { 'left': '', 'right': '' }
+\}
+
+function! LightLineModified()
+  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightLineReadonly()
+  return &ft !~? 'help' && &readonly ? '🔒' : ''
+endfunction
+
+function! LightLineFilename()
+  let fname = expand('%:t')
+  return fname == 'ControlP' && has_key(g:lightline, 'ctrlp_item') ? g:lightline.ctrlp_item :
+        \ fname == '__Tagbar__' ? g:lightline.fname :
+        \ fname =~ '__Gundo\|NERD_tree' ? '' :
+        \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \ &ft == 'unite' ? unite#get_status_string() :
+        \ &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+        \ ('' != fname ? fname : '[No Name]') .
+        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
+
+function! LightLineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightLineFiletype()
+  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightLineFileencoding()
+  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+
+function! LightLineMode()
+  let fname = expand('%:t')
+  return fname == 'ControlP' ? 'OPEN' :
+        \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+let g:ctrlp_status_func = {
+  \ 'main': 'CtrlPStatusFunc_1',
+  \ 'prog': 'CtrlPStatusFunc_2',
+  \ }
+
+function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
+  let g:lightline.ctrlp_regex = a:regex
+  let g:lightline.ctrlp_prev = a:prev
+  let g:lightline.ctrlp_item = a:item
+  let g:lightline.ctrlp_next = a:next
+  return lightline#statusline(0)
+endfunction
+
+function! CtrlPStatusFunc_2(str)
+  return lightline#statusline(0)
+endfunction
+
+let g:tagbar_status_func = 'TagbarStatusFunc'
+
+function! TagbarStatusFunc(current, sort, fname, ...) abort
+    let g:lightline.fname = a:fname
+  return lightline#statusline(0)
+endfunction
+
+" don't say insert, etc. below lightline
+set noshowmode
 
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 
@@ -179,6 +255,9 @@ nnoremap <esc> :noh<return><esc>
 " split right and below instead of left and up
 set splitbelow
 set splitright
+
+set fillchars+=vert:│
+hi VertSplit ctermbg=NONE guibg=NONE
 
 if has('nvim')
   nmap <bs> :<c-u>TmuxNavigateLeft<cr>
