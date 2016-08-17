@@ -166,7 +166,7 @@ nnoremap <C-N> :bprev<CR>
 function! Current_git_branch()
     let l:branch = split(fugitive#statusline(),'[()]')
     if len(l:branch) > 1
-         return remove(l:branch, 1)
+         return winwidth(0) > 55 ? remove(l:branch, 1) : ''
     endif
     return ""
 endfunction
@@ -186,7 +186,7 @@ let g:lightline = {
 \     [ 'ctrlpmark' ],
 \    ],
 \   'right': [
-\     [ 'syntastic', 'lineinfo' ],
+\     [ 'syntastic', 'line' ],
 \     [ 'percent' ],
 \     [ 'fileformat', 'fileencoding', 'filetype' ]
 \   ]
@@ -198,12 +198,14 @@ let g:lightline = {
 \   'fileencoding': 'LightLineFileencoding',
 \   'mode': 'LightLineMode',
 \   'ctrlpmark': 'CtrlPMark',
+\   'percent': 'LightLinePercent',
+\   'line': 'LightLineLine',
 \ },
 \ 'component': {
 \   'branch': ' %{Current_git_branch()}',
 \ },
 \ 'component_visible_condition': {
-\   'branch': '(Current_git_branch()!="")'
+\   'branch': '(Current_git_branch()!="")',
 \ },
 \ 'component_expand': {
 \   'syntastic': 'SyntasticStatuslineFlag',
@@ -225,7 +227,7 @@ endfunction
 
 function! LightLineFilename()
   let fname = expand('%:t')
-  return fname == 'ControlP' && has_key(g:lightline, 'ctrlp_item') ? g:lightline.ctrlp_item :
+  let file = fname == 'ControlP' && has_key(g:lightline, 'ctrlp_item') ? g:lightline.ctrlp_item :
         \ fname == '__Tagbar__' ? g:lightline.fname :
         \ fname =~ '__Gundo\|NERD_tree' ? '' :
         \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
@@ -234,24 +236,45 @@ function! LightLineFilename()
         \ ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
         \ ('' != fname ? fname : '[No Name]') .
         \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+  return winwidth(0) > 30 ? file : ''
+
 endfunction
 
 function! LightLineFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! LightLineFiletype()
-  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+  return winwidth(0) > 75 ? &fileformat : ''
 endfunction
 
 function! LightLineFileencoding()
-  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+  return winwidth(0) > 68 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+
+function! LightLineFiletype()
+  return winwidth(0) > 60 ? (&filetype !=# '' ? &filetype : '') : ''
+endfunction
+
+function! LinePercent()
+    return line('.') * 100 / line('$') . '%'
+endfunction
+
+function! LightLinePercent()
+  return winwidth(0) > 42 ? LinePercent() : ''
+endfunction
+
+function! LightLineLine()
+  if winwidth(0) > 37
+    return line('.') . ':' . col('.')
+  elseif winwidth(0) > 35
+    return line('.')
+  else
+    return ''
+  endif
 endfunction
 
 function! LightLineMode()
+
   let fname = expand('%:t')
   return fname == 'ControlP' ? 'OPEN' :
-        \ winwidth(0) > 60 ? lightline#mode() : ''
+        \ winwidth(0) > 10 ? lightline#mode() : ''
 endfunction
 
 let g:ctrlp_status_func = {
@@ -307,9 +330,6 @@ set splitbelow
 set splitright
 
 set fillchars+=vert:│
-
-"Start scrolling when we're 8 lines away from margins
-set scrolloff=8
 
 hi VertSplit ctermbg=NONE guibg=NONE
 
