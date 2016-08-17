@@ -4,6 +4,15 @@ execute pathogen#infect()
 " use syntax detection/highlighting
 syntax enable
 
+" Automatically :write before running commands
+set autowrite
+
+" Reload files changed outside vim
+set autoread
+
+" Trigger autoread when changing buffers or coming back to vim in terminal.
+au FocusGained,BufEnter * :silent! !
+
 " Colors
 set background=dark
 colorscheme solarized
@@ -17,7 +26,7 @@ autocmd BufNewFile,BufRead *.slim set ft=slim
 " Close vim if there are no more buffers open
 :autocmd BufDelete * if len(filter(range(1, bufnr('$')), '!empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
 
-" In completion, include dashes
+" include dashes in completion
 set iskeyword+=-
 
 set ignorecase
@@ -298,6 +307,10 @@ set splitbelow
 set splitright
 
 set fillchars+=vert:│
+
+"Start scrolling when we're 8 lines away from margins
+set scrolloff=8
+
 hi VertSplit ctermbg=NONE guibg=NONE
 
 if has('nvim')

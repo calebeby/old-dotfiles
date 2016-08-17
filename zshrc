@@ -95,6 +95,7 @@ alias e="if [ -s Session.vim ] ; then; nvim -S; else; nvim; fi"
 alias b='sudo halt -p'
 alias ag='ag --path-to-agignore ~/.agignore --hidden'
 alias work='tmux attach -t'
+alias install='yaourt -S'
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:/usr/local/bin"
@@ -307,3 +308,4 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
+
