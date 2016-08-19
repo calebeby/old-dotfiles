@@ -18,7 +18,22 @@ set background=dark
 colorscheme solarized
 
 " Use emmet for tab in xml, html, etc. files
-autocmd FileType html,svg,css,scss,sass imap <buffer> <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+" autocmd FileType html,svg,css,scss,sass imap <buffer> <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+"
+function! Emmet_or_ultisnip()
+  echo 'running function'
+  if !emmet#isExpandable()
+    echo 'isnt expandable'
+    return "\<plug>SuperTabForward"
+  else
+    echo 'is expandable'
+    return "\<plug>(emmet-expand-abbr)"
+  endif
+endfunction
+
+augroup DisableMappings
+    autocmd! VimEnter * :imap <expr> <tab> Emmet_or_ultisnip()
+augroup END
 
 " Fixes bug where Vim thinks doctype means html
 autocmd BufNewFile,BufRead *.slim set ft=slim
@@ -83,6 +98,8 @@ au FileType ruby,eruby setl ofu=rubycomplete#Complete
 au FileType slim,html,xhtml setl ofu=htmlcomplete#CompleteTags
 au FileType c setl ofu=ccomplete#CompleteCpp
 au FileType scss,sass,css setl ofu=csscomplete#CompleteCSS
+
+let g:SuperTabDefaultCompletionType = 'context'
 
 if executable('ag')
   " Use ag in CtrlP for listing files
