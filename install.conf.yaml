@@ -1,6 +1,6 @@
 - shell:
   -
-    command: git add -A && git commit -am 'automated update'
+    command: git add -A && git commit -am 'automated update' || echo 'no updates'
     stdout: true
   - 
     command: git pull
@@ -37,6 +37,7 @@
     ~/.agignore: agignore
     ~/.tmux.conf: tmux.conf
     ~/.Xresources: Xresources
+    ~/.emacs.d: emacs.d
 
 - shell:
   -
