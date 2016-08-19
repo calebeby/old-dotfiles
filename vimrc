@@ -56,15 +56,15 @@ nnoremap j gj
 nnoremap k gk
 
 " No arrow keys in normal and insert
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+" noremap <Up> <NOP>
+" noremap <Down> <NOP>
+" noremap <Left> <NOP>
+" noremap <Right> <NOP>
 
-imap <up> <NOP>
-imap <down> <NOP>
-imap <left> <NOP>
-imap <right> <NOP>
+" imap <up> <NOP>
+" imap <down> <NOP>
+" imap <left> <NOP>
+" imap <right> <NOP>
 
 " Align markdown tables with tab
 au FileType markdown vmap <tab> :EasyAlign*<Bar><Enter>
