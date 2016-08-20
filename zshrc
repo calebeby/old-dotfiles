@@ -40,6 +40,8 @@ alias b='sudo halt -p'
 alias ag='ag --path-to-agignore ~/.agignore --hidden'
 alias work='tmux attach -t'
 alias install='yaourt -S'
+alias uninstall='yaourt -Rs'
+alias remove='yaourt -Rs'
 alias update='yaourt -Syu && yaourt -Su --aur; upgrade_oh_my_zsh'
 
 export PATH="$PATH:$HOME/.rvm/bin"
