@@ -341,6 +341,11 @@ let &t_EI = "\<esc>[2 q"
 " Show relative numbers
 set relativenumber
 
+" run :sudo to add sudo permissions
+" NOTE: doesn't work in Neovim (August 2016)
+" https://github.com/neovim/neovim/issues/1716
+command! Sudo w !sudo tee %
+
 " clear search
 nnoremap <esc> :noh<return><esc>
 
