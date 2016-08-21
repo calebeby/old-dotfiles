@@ -22,12 +22,11 @@ colorscheme solarized
 "
 function! Emmet_or_ultisnip()
   echo 'running function'
-  if !emmet#isExpandable()
-    echo 'isnt expandable'
-    return "\<plug>SuperTabForward"
-  else
-    echo 'is expandable'
+
+  if ((&ft=='html' || &ft=='xml' || &ft=='svg' || &ft=='css' || &ft=='scss' || &ft=='sass') && emmet#isExpandable())
     return "\<plug>(emmet-expand-abbr)"
+  else
+    return "\<plug>SuperTabForward"
   endif
 endfunction
 
@@ -79,25 +78,28 @@ nnoremap j gj
 nnoremap k gk
 
 " No arrow keys in normal and insert
-" noremap <Up> <NOP>
-" noremap <Down> <NOP>
-" noremap <Left> <NOP>
-" noremap <Right> <NOP>
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
-" imap <up> <NOP>
-" imap <down> <NOP>
-" imap <left> <NOP>
-" imap <right> <NOP>
+imap <up> <NOP>
+imap <down> <NOP>
+imap <left> <NOP>
+imap <right> <NOP>
+
+noremap + <C-a>
+noremap - <C-x>
 
 " Align markdown tables with tab
 au FileType markdown vmap <tab> :EasyAlign*<Bar><Enter>
 
-" Complete properly
-au FileType php setl ofu=phpcomplete#CompletePHP
-au FileType ruby,eruby setl ofu=rubycomplete#Complete
-au FileType slim,html,xhtml setl ofu=htmlcomplete#CompleteTags
-au FileType c setl ofu=ccomplete#CompleteCpp
-au FileType scss,sass,css setl ofu=csscomplete#CompleteCSS
+" " Complete properly
+" au FileType php setl ofu=phpcomplete#CompletePHP
+" au FileType ruby,eruby setl ofu=rubycomplete#Complete
+" au FileType slim,html,xhtml setl ofu=htmlcomplete#CompleteTags
+" au FileType c setl ofu=ccomplete#CompleteCpp
+" au FileType scss,sass,css setl ofu=csscomplete#CompleteCSS
 
 let g:SuperTabDefaultCompletionType = 'context'
 

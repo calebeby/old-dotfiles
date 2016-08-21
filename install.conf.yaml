@@ -38,6 +38,8 @@
     ~/.tmux.conf: tmux.conf
     ~/.Xresources: Xresources
     ~/.emacs.d: emacs.d
+    ~/.gtkrc-2.0: gtkrc
+    ~/.gtk-bookmarks: gtk-bookmarks
 
 - shell:
   -
