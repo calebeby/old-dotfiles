@@ -23,7 +23,7 @@ export EDITOR='nvim'
 
 xset -b
 
-export TERM=urxvt-256color
+export TERM=rxvt-unicode-256color
 
 alias p="~/Podcasts/bashpodder.sh && ~/Podcasts/speedup.sh"
 alias t="~/Podcasts/transfer.sh"
@@ -56,7 +56,7 @@ export rvmsudo_secure_path=1
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 alias g='hub'
 
