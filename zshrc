@@ -54,7 +54,9 @@ export QT_STYLE_OVERRIDE='gtk'
 
 export rvmsudo_secure_path=1
 
-[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 alias g='hub'
 
