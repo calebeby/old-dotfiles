@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-# export ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="calebeby"
 
@@ -44,17 +44,15 @@ alias install='yaourt -S'
 alias uninstall='yaourt -Rs'
 alias remove='yaourt -Rs'
 alias update='yaourt -Syu && yaourt -Su --aur; upgrade_oh_my_zsh'
+# alias avg="for i in {1..10}; do /usr/bin/time -p $1; done 2>&1 | ag real | sed -e 's/real //' | awk '{sum += $1} END {print sum / NR}'"
+alias avg="for i in {1..10}; do /usr/bin/time -p $1; done 2>&1 | ag real | sed -e 's/real //'"
 
-export PATH="$PATH:$HOME/.rvm/bin"
-export PATH="$PATH:/usr/local/bin"
+export PATH="$PATH:$HOME/.rvm/bin:/usr/local/bin"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export QT_STYLE_OVERRIDE='gtk'
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source $HOME/.rvm/scripts/rvm
 
-export rvmsudo_secure_path=1
+# export rvmsudo_secure_path=1
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

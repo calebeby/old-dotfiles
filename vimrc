@@ -58,9 +58,6 @@ set shiftwidth=2
 
 set expandtab
 
-" Show hidden files
-let g:ctrlp_show_hidden = 1
-
 " times for leader commands
 set timeoutlen=1000
 set ttimeoutlen=10
@@ -103,12 +100,22 @@ au FileType markdown vmap <tab> :EasyAlign*<Bar><Enter>
 
 let g:SuperTabDefaultCompletionType = 'context'
 
-if executable('ag')
-  " Use ag in CtrlP for listing files
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+" Show hidden files
+let g:ctrlp_show_hidden = 1
 
-  " Don't cache results
-  " let g:ctrlp_use_caching = 0
+" if executable('ag')
+"   " Use ag in CtrlP for listing files
+"   let g:ctrlp_user_command = 'ag %s -l -i --nocolor --hidden -g ""'
+
+"   " Don't cache results
+"   " let g:ctrlp_use_caching = 0
+" endif
+
+if executable('ag')
+    let g:ctrlp_user_command = 'ag --ignore-case --nogroup --hidden --follow
+        \ -U -p ~/.agignore
+        \ -l -m 50000
+        \ %s -g ""'
 endif
 
 " Use system clipboard
