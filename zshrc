@@ -23,8 +23,8 @@ export EDITOR='nvim'
 
 xset -b
 
-# export TERM=xterm-256color
 export TERM=rxvt-unicode-256color
+
 alias p="~/Podcasts/bashpodder.sh && ~/Podcasts/speedup.sh"
 alias t="~/Podcasts/transfer.sh"
 alias cat='fun () {highlight -O ansi -i $1 2>/dev/null || command cat $1;}; fun'
@@ -54,5 +54,7 @@ export QT_STYLE_OVERRIDE='gtk'
 
 export rvmsudo_secure_path=1
 
-[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
