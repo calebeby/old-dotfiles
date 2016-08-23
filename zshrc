@@ -44,8 +44,12 @@ alias install='yaourt -S'
 alias uninstall='yaourt -Rs'
 alias remove='yaourt -Rs'
 alias update='yaourt -Syu && yaourt -Su --aur; upgrade_oh_my_zsh'
+alias alert='notify-send -i urxvt "[$?] $(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/;\s*alert$//'\'')"'
 # alias avg="for i in {1..10}; do /usr/bin/time -p $1; done 2>&1 | ag real | sed -e 's/real //' | awk '{sum += $1} END {print sum / NR}'"
 alias avg="for i in {1..10}; do /usr/bin/time -p $1; done 2>&1 | ag real | sed -e 's/real //'"
+
+# http://askubuntu.com/questions/409611/desktop-notification-when-long-running-commands-complete
+trap '_start=$SECONDS' DEBUG
 
 export PATH="$PATH:$HOME/.rvm/bin:/usr/local/bin"
 export QT_QPA_PLATFORMTHEME="qt5ct"
@@ -56,3 +60,27 @@ export QT_STYLE_OVERRIDE='gtk'
 # export rvmsudo_secure_path=1
 
 # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+preexec () {
+    # Note the date when the command started, in unix time.
+    CMD_START_DATE=$(date +%s)
+    # Store the command that we're running.
+    CMD_NAME=$1
+}
+precmd () {
+    # Proceed only if we've ran a command in the current shell.
+    if ! [[ -z $CMD_START_DATE ]]; then
+        # Note current date in unix time
+        CMD_END_DATE=$(date +%s)
+        # Store the difference between the last command start date vs. current date.
+        CMD_ELAPSED_TIME=$(($CMD_END_DATE - $CMD_START_DATE))
+        # Store an arbitrary threshold, in seconds.
+        CMD_NOTIFY_THRESHOLD=5
+
+        if [[ $CMD_ELAPSED_TIME -gt $CMD_NOTIFY_THRESHOLD ]]; then
+            # Beep or visual bell if the elapsed time (in seconds) is greater than threshold
+            print -n '\a'
+            # Send a notification
+            notify-send "$CMD_NAME Finished"
+        fi
+    fi
+}
