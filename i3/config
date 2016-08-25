@@ -2,11 +2,11 @@
 set $mod Mod4
 
 # Font for window titles and bar
-font pango:Source Code Pro, Icons 11
+font pango:Lato, Icons 11
 #font pango:DejaVu Sans Mono 8
 
 assign [class="google-chrome"] 1
-exec --no-startup-id wicd-client --tray
+exec --no-startup-id connman-ui-gtk --tray
 exec --no-startup-id i3-msg 'workspace 1; exec --no-startup-id google-chrome-stable; workspace 2; exec --no-startup-id urxvt'
 exec --no-startup-id dunst
 

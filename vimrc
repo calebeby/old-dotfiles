@@ -103,19 +103,12 @@ let g:SuperTabDefaultCompletionType = 'context'
 " Show hidden files
 let g:ctrlp_show_hidden = 1
 
-" if executable('ag')
-"   " Use ag in CtrlP for listing files
-"   let g:ctrlp_user_command = 'ag %s -l -i --nocolor --hidden -g ""'
-
-"   " Don't cache results
-"   " let g:ctrlp_use_caching = 0
-" endif
-
 if executable('ag')
-    let g:ctrlp_user_command = 'ag --ignore-case --nogroup --hidden --follow
+  let g:ctrlp_user_command = 'ag --ignore-case --nogroup --hidden --follow
         \ -U -p ~/.agignore
         \ -l -m 50000
         \ %s -g ""'
+  let g:ctrlp_use_caching = 0
 endif
 
 " Use system clipboard

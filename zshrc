@@ -19,11 +19,22 @@ export EDITOR='nvim'
 #  export EDITOR='vim'
 #fi
 
-# Aliases
-
+# Disable beep
 xset -b
 
+# Show contents of directory after cd-ing into it
+chpwd() {
+  ls -v --color=tty
+}
+
+# Save a ton of history
+HISTSIZE=20000
+HISTFILE=~/.zsh_history
+SAVEHIST=20000
+
 export TERM=rxvt-unicode-256color
+
+# Aliases
 
 alias p="~/Podcasts/bashpodder.sh && ~/Podcasts/speedup.sh"
 alias t="~/Podcasts/transfer.sh"
@@ -47,6 +58,7 @@ alias update='yaourt -Syu && yaourt -Su --aur; upgrade_oh_my_zsh'
 alias alert='notify-send -i urxvt "[$?] $(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/;\s*alert$//'\'')"'
 # alias avg="for i in {1..10}; do /usr/bin/time -p $1; done 2>&1 | ag real | sed -e 's/real //' | awk '{sum += $1} END {print sum / NR}'"
 alias avg="for i in {1..10}; do /usr/bin/time -p $1; done 2>&1 | ag real | sed -e 's/real //'"
+alias time='/usr/bin/time'
 
 # http://askubuntu.com/questions/409611/desktop-notification-when-long-running-commands-complete
 trap '_start=$SECONDS' DEBUG
@@ -75,12 +87,13 @@ precmd () {
         CMD_ELAPSED_TIME=$(($CMD_END_DATE - $CMD_START_DATE))
         # Store an arbitrary threshold, in seconds.
         CMD_NOTIFY_THRESHOLD=5
+        commands=(nvim tmux)
 
         if [[ $CMD_ELAPSED_TIME -gt $CMD_NOTIFY_THRESHOLD ]]; then
-            # Beep or visual bell if the elapsed time (in seconds) is greater than threshold
-            print -n '\a'
+          if [[ ${commands[(r)b]} == b ]]; then
             # Send a notification
-            notify-send "$CMD_NAME Finished"
+            notify-send "Task Finished" "\"$CMD_NAME\""
+          fi
         fi
     fi
 }
