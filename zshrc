@@ -36,6 +36,7 @@ export TERM=rxvt-unicode-256color
 
 # Aliases
 
+alias git='hub'
 alias p="~/Podcasts/bashpodder.sh && ~/Podcasts/speedup.sh"
 alias t="~/Podcasts/transfer.sh"
 alias cat='fun () {highlight -O ansi -i $1 2>/dev/null || command cat $1;}; fun'
