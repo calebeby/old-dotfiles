@@ -88,3 +88,6 @@
 [submodule "vim/bundle/vim-stylus"]
 	path = vim/bundle/vim-stylus
 	url = https://github.com/wavded/vim-stylus
+[submodule "vim/bundle/vim-textobj-url"]
+	path = vim/bundle/vim-textobj-url
+	url = https://github.com/mattn/vim-textobj-url

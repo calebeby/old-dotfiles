@@ -1,6 +1,8 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+autoload zmv
+
 ZSH_THEME="calebeby"
 
 HYPHEN_INSENSITIVE="true"
@@ -60,6 +62,11 @@ alias alert='notify-send -i urxvt "[$?] $(history|tail -n1|sed -e '\''s/^\s*[0-9
 # alias avg="for i in {1..10}; do /usr/bin/time -p $1; done 2>&1 | ag real | sed -e 's/real //' | awk '{sum += $1} END {print sum / NR}'"
 alias avg="for i in {1..10}; do /usr/bin/time -p $1; done 2>&1 | ag real | sed -e 's/real //'"
 alias time='/usr/bin/time'
+alias mmv='noglob zmv -W'
+
+pullall () {
+  find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git pull" \;
+}
 
 # http://askubuntu.com/questions/409611/desktop-notification-when-long-running-commands-complete
 trap '_start=$SECONDS' DEBUG
