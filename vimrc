@@ -90,6 +90,7 @@ noremap - <C-x>
 
 " Align markdown tables with tab
 au FileType markdown vmap <tab> :EasyAlign*<Bar><Enter>
+au FileType markdown map <Bar> vip :EasyAlign*<Bar><Enter>
 
 " " Complete properly
 " au FileType php setl ofu=phpcomplete#CompletePHP
