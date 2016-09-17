@@ -27,6 +27,7 @@
       create: false
     ~/.bashrc: bashrc
     ~/.gemrc: gemrc
+    ~/.npmrc: npmrc
     ~/.zshrc: zshrc
     ~/.bash_aliases: .bash_aliases
     ~/.fonts: fonts
