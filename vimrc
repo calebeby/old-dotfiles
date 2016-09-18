@@ -69,6 +69,8 @@ let g:vim_markdown_frontmatter = 1
 
 " Save swap files here
 set directory=~/tmp
+" don't make something.some~ files
+set nowritebackup
 
 " Go up and down properly in long lines
 nnoremap j gj
