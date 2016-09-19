@@ -34,7 +34,7 @@ HISTSIZE=20000
 HISTFILE=~/.zsh_history
 SAVEHIST=20000
 
-export TERM=rxvt-unicode-256color
+# export TERM=rxvt-unicode-256color
 
 # Aliases
 

@@ -13,6 +13,12 @@ set autoread
 " Trigger autoread when changing buffers or coming back to vim in terminal.
 au FocusGained,BufEnter * :silent! !
 
+"NeoVim handles ESC keys as alt+key, set this to solve the problem
+if has('nvim')
+  set ttimeout
+  set ttimeoutlen=0
+endif
+
 " Colors
 set background=dark
 colorscheme solarized
@@ -31,7 +37,7 @@ function! Emmet_or_ultisnip()
 endfunction
 
 augroup DisableMappings
-    autocmd! VimEnter * :imap <expr> <tab> Emmet_or_ultisnip()
+  autocmd! VimEnter * :imap <expr> <tab> Emmet_or_ultisnip()
 augroup END
 
 " Fixes bug where Vim thinks doctype means html
@@ -186,11 +192,11 @@ nnoremap <C-M> :bnext<CR>
 nnoremap <C-N> :bprev<CR>
 
 function! Current_git_branch()
-    let l:branch = split(fugitive#statusline(),'[()]')
-    if len(l:branch) > 1
-         return winwidth(0) > 55 ? remove(l:branch, 1) : ''
-    endif
-    return ""
+  let l:branch = split(fugitive#statusline(),'[()]')
+  if len(l:branch) > 1
+    return winwidth(0) > 55 ? remove(l:branch, 1) : ''
+  endif
+  return ""
 endfunction
 
 let g:buftabline_indicators = 1
@@ -200,44 +206,44 @@ hi BufTabLineFill ctermfg=8 ctermbg=8 cterm=NONE
 hi BufTabLineActive ctermfg=14 ctermbg=8 cterm=bold
 
 let g:lightline = {
-\ 'colorscheme': 'solarized',
-\ 'active': {
-\   'left': [
-\     [ 'mode', 'paste' ],
-\     [ 'filename', 'branch' ],
-\     [ 'ctrlpmark' ],
-\    ],
-\   'right': [
-\     [ 'syntastic', 'line' ],
-\     [ 'percent' ],
-\     [ 'fileformat', 'fileencoding', 'filetype' ]
-\   ]
-\ },
-\ 'component_function': {
-\   'filename': 'LightLineFilename',
-\   'fileformat': 'LightLineFileformat',
-\   'filetype': 'LightLineFiletype',
-\   'fileencoding': 'LightLineFileencoding',
-\   'mode': 'LightLineMode',
-\   'ctrlpmark': 'CtrlPMark',
-\   'percent': 'LightLinePercent',
-\   'line': 'LightLineLine',
-\ },
-\ 'component': {
-\   'branch': ' %{Current_git_branch()}',
-\ },
-\ 'component_visible_condition': {
-\   'branch': '(Current_git_branch()!="")',
-\ },
-\ 'component_expand': {
-\   'syntastic': 'SyntasticStatuslineFlag',
-\ },
-\ 'component_type': {
-\   'syntastic': 'error',
-\ },
-\ 'separator': { 'left': '', 'right': '' },
-\ 'subseparator': { 'left': '', 'right': '' },
-\}
+      \ 'colorscheme': 'solarized',
+      \ 'active': {
+      \   'left': [
+      \     [ 'mode', 'paste' ],
+      \     [ 'filename', 'branch' ],
+      \     [ 'ctrlpmark' ],
+      \    ],
+      \   'right': [
+      \     [ 'syntastic', 'line' ],
+      \     [ 'percent' ],
+      \     [ 'fileformat', 'fileencoding', 'filetype' ]
+      \   ]
+      \ },
+      \ 'component_function': {
+      \   'filename': 'LightLineFilename',
+      \   'fileformat': 'LightLineFileformat',
+      \   'filetype': 'LightLineFiletype',
+      \   'fileencoding': 'LightLineFileencoding',
+      \   'mode': 'LightLineMode',
+      \   'ctrlpmark': 'CtrlPMark',
+      \   'percent': 'LightLinePercent',
+      \   'line': 'LightLineLine',
+      \ },
+      \ 'component': {
+      \   'branch': ' %{Current_git_branch()}',
+      \ },
+      \ 'component_visible_condition': {
+      \   'branch': '(Current_git_branch()!="")',
+      \ },
+      \ 'component_expand': {
+      \   'syntastic': 'SyntasticStatuslineFlag',
+      \ },
+      \ 'component_type': {
+      \   'syntastic': 'error',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' },
+      \}
 
 function! LightLineModified()
   return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
@@ -275,7 +281,7 @@ function! LightLineFiletype()
 endfunction
 
 function! LinePercent()
-    return line('.') * 100 / line('$') . '%'
+  return line('.') * 100 / line('$') . '%'
 endfunction
 
 function! LightLinePercent()
@@ -300,9 +306,9 @@ function! LightLineMode()
 endfunction
 
 let g:ctrlp_status_func = {
-  \ 'main': 'CtrlPStatusFunc_1',
-  \ 'prog': 'CtrlPStatusFunc_2',
-  \ }
+      \ 'main': 'CtrlPStatusFunc_1',
+      \ 'prog': 'CtrlPStatusFunc_2',
+      \ }
 
 function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
   let g:lightline.ctrlp_regex = a:regex
@@ -319,7 +325,7 @@ endfunction
 let g:tagbar_status_func = 'TagbarStatusFunc'
 
 function! TagbarStatusFunc(current, sort, fname, ...) abort
-    let g:lightline.fname = a:fname
+  let g:lightline.fname = a:fname
   return lightline#statusline(0)
 endfunction
 
@@ -337,9 +343,15 @@ set spellfile=$HOME/.vim-spell-en.utf-8.add
 
 " Change cursor shape on entering insert or replace mode
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
+
 let &t_SI = "\<esc>[5 q"
 let &t_SR = "\<esc>[5 q"
 let &t_EI = "\<esc>[2 q"
+
+if exists('$TMUX')
+  let &t_SI = "\ePtmux;\e" . &t_SI . "\e\\"
+  let &t_EI = "\ePtmux;\e" . &t_EI . "\e\\"
+endif
 
 " Show relative numbers
 set relativenumber
