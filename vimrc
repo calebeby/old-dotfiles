@@ -26,6 +26,9 @@ colorscheme solarized
 " Use emmet for tab in xml, html, etc. files
 " autocmd FileType html,svg,css,scss,sass imap <buffer> <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 "
+
+autocmd BufRead,BufNewFile *.sgr setfiletype pug
+
 function! Emmet_or_ultisnip()
   echo 'running function'
 
