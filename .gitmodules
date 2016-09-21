@@ -97,3 +97,6 @@
 [submodule "vim/bundle/vim-slm"]
 	path = vim/bundle/vim-slm
 	url = https://github.com/slm-lang/vim-slm
+[submodule "vim/bundle/vim-sugarss"]
+	path = vim/bundle/vim-sugarss
+	url = https://github.com/hhsnopek/vim-sugarss
