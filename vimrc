@@ -27,7 +27,9 @@ colorscheme solarized
 " autocmd FileType html,svg,css,scss,sass imap <buffer> <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 "
 
-autocmd BufRead,BufNewFile *.sgr setfiletype pug
+autocmd BufRead,BufNewFile *.sgr set ft=pug
+" Fixes bug where Vim thinks doctype means html
+autocmd BufRead,BufNewFile *.slim set ft=slim
 
 function! Emmet_or_ultisnip()
   echo 'running function'
@@ -43,8 +45,6 @@ augroup DisableMappings
   autocmd! VimEnter * :imap <expr> <tab> Emmet_or_ultisnip()
 augroup END
 
-" Fixes bug where Vim thinks doctype means html
-autocmd BufNewFile,BufRead *.slim set ft=slim
 
 " Close vim if there are no more buffers open
 :autocmd BufDelete * if len(filter(range(1, bufnr('$')), '!empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
