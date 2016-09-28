@@ -52,7 +52,7 @@ alias mm="bundle exec middleman"
 alias gs="hub status"
 alias e="if [ -s Session.vim ] ; then; nvim -S; else; nvim; fi"
 alias b='halt -p'
-alias ag='ag --path-to-agignore ~/.agignore --hidden'
+alias ag='ag --path-to-ignore ~/.agignore --hidden'
 alias work='tmux attach -t'
 alias install='yaourt -S'
 alias uninstall='yaourt -Rs'
@@ -64,10 +64,7 @@ alias alert='notify-send -i urxvt "[$?] $(history|tail -n1|sed -e '\''s/^\s*[0-9
 alias avg="for i in {1..10}; do /usr/bin/time -p $1; done 2>&1 | ag real | sed -e 's/real //'"
 alias time='/usr/bin/time'
 alias mmv='noglob zmv -W'
-
-pullall () {
-  find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git pull" \;
-}
+alias pullall='~/dotfiles/pullall.sh'
 
 # http://askubuntu.com/questions/409611/desktop-notification-when-long-running-commands-complete
 trap '_start=$SECONDS' DEBUG
