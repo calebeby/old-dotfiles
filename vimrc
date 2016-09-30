@@ -19,6 +19,9 @@ if has('nvim')
   set ttimeoutlen=0
 endif
 
+let g:indentLine_char = '┆'
+" let g:indentLine_char = '│'
+
 " Colors
 set background=dark
 colorscheme solarized

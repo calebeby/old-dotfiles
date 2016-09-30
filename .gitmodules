@@ -100,3 +100,9 @@
 [submodule "vim/bundle/vim-sugarss"]
 	path = vim/bundle/vim-sugarss
 	url = https://github.com/hhsnopek/vim-sugarss
+[submodule "vim/bundle/vim-indent-guides"]
+	path = vim/bundle/vim-indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides
+[submodule "vim/bundle/indentLine"]
+	path = vim/bundle/indentLine
+	url = https://github.com/Yggdroot/indentLine
