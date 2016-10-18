@@ -13,6 +13,9 @@ set autoread
 " Trigger autoread when changing buffers or coming back to vim in terminal.
 au FocusGained,BufEnter * :silent! !
 
+let $XIKI_DIR = "~/xiki-project"
+source ~/xiki-project/misc/vim/xiki.vim
+
 "NeoVim handles ESC keys as alt+key, set this to solve the problem
 if has('nvim')
   set ttimeout

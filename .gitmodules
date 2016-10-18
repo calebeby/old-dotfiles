@@ -106,3 +106,6 @@
 [submodule "vim/bundle/indentLine"]
 	path = vim/bundle/indentLine
 	url = https://github.com/Yggdroot/indentLine
+[submodule "vim/bundle/elm.vim"]
+	path = vim/bundle/elm.vim
+	url = https://github.com/lambdatoast/elm.vim

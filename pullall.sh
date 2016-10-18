@@ -10,7 +10,7 @@ cd $(dirname $0)
 IFS=$'\n'
 
 clr_bold "Looking for git projects"
-directories=$(find ~ -type d -name .git)
+directories=$(find ~/Programming -type d -name .git)
 for directory in $directories; do
   cd $directory
   cd ..

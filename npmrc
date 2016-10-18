@@ -1,1 +1,2 @@
-prefix=${HOME}/.npm-packages
+prefix=/home/caleb/.npm-packages
+//registry.npmjs.org/:_authToken=26843050-0a6b-44eb-9c85-87450b9f4f9f
