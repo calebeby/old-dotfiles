@@ -77,7 +77,7 @@ set expandtab
 set timeoutlen=1000
 set ttimeoutlen=10
 
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'javascript=js', 'coffee']
+" let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'coffee']
 
 " don't mess with my markdown
 let g:vim_markdown_conceal = 0
