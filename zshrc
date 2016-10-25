@@ -17,6 +17,7 @@ source $ZSH/oh-my-zsh.sh
 
 #if [[ -n $SSH_CONNECTION ]]; then
 export EDITOR='nvim'
+export BROWSER='google-chrome-stable'
 #else
 #  export EDITOR='vim'
 #fi

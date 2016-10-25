@@ -1,5 +1,40 @@
-" Start Pathogen
-execute pathogen#infect()
+set nocompatible
+
+" Required Vundle setup
+filetype off
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'lambdatoast/elm.vim'
+Plug 'mattn/emmet-vim'
+Plug 'Yggdroot/indentLine'
+Plug 'itchyny/lightline.vim'
+Plug 'ervandew/supertab'
+Plug 'leafgarland/typescript-vim'
+Plug 'ap/vim-buftabline'
+Plug 'kchmck/vim-coffee-script'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
+Plug 'junegunn/vim-easy-align'
+Plug 'tpope/vim-fugitive'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'digitaltoad/vim-jade'
+Plug 'pangloss/vim-javascript'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-obsession'
+Plug 'slim-template/vim-slim'
+Plug 'slm-lang/vim-slm'
+Plug 'wavded/vim-stylus'
+Plug 'hhsnopek/vim-sugarss'
+Plug 'tpope/vim-surround'
+Plug 'mattn/vim-textobj-url'
+Plug 'kana/vim-textobj-user'
+Plug 'guns/xterm-color-table.vim'
+
+" Add plugins to &runtimepath
+call plug#end()
 
 " use syntax detection/highlighting
 syntax enable
@@ -23,7 +58,7 @@ if has('nvim')
 endif
 
 let g:indentLine_char = '┆'
-" let g:indentLine_char = '│'
+let g:indentLine_char = '│'
 
 " Colors
 set background=dark
@@ -53,7 +88,7 @@ augroup END
 
 
 " Close vim if there are no more buffers open
-:autocmd BufDelete * if len(filter(range(1, bufnr('$')), '!empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
+" :autocmd BufDelete * if len(filter(range(1, bufnr('$')), '!empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
 
 " include dashes in completion
 set iskeyword+=-
