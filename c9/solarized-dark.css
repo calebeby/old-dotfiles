@@ -1,0 +1,723 @@
+.access_control .readbutton,
+.access_control .writebutton,
+.access_control.disabled,
+.ace_tree_heading,
+.ace_tree_layer {
+  pointer-events: none;
+}
+.stats-bubble .info,
+.stats-menu .info {
+  border: 0;
+}
+.chatText {
+  background: #002b36;
+}
+.chatText p {
+  word-wrap: break-word;
+}
+.chatContainer .searchTxt.tb_console {
+  background: #002b36;
+}
+.chatContainer .searchTxt.tb_console .sbtb_middle {
+  border-color: #073642;
+  background: #002b36;
+}
+.chatContainer .tb_textboxInitialMsg {
+  text-indent: 3px;
+}
+.memberstree .avatar img {
+  border: 0;
+}
+.share .link,
+.share .members,
+.share blockquote {
+  border: 1px solid #073642;
+}
+.access_control.disabled .readbutton,
+.access_control.disabled .writebutton,
+.access_control.r .readbutton,
+.access_control.rw .writebutton,
+.memberstree.ace_tree_focus .selected .access_control.disabled .readbutton,
+.memberstree.ace_tree_focus .selected .access_control.disabled .writebutton,
+.memberstree.ace_tree_focus .selected .access_control.r .readbutton,
+.memberstree.ace_tree_focus .selected .access_control.rw .writebutton {
+  color: #002b36;
+}
+.memberstree .tree-row.selected {
+  background: #002b36;
+}
+.share .members .hover {
+  background: 0 0;
+}
+.ace_tree .toggler {
+  pointer-events: auto;
+}
+.ace_tree .toggler.empty {
+  pointer-events: none;
+}
+.ace_tree-light .tree-row {
+  border: 1px solid transparent;
+}
+.notificationstree .avatar img {
+  border: 0;
+}
+.ace_tree-light .tree-headings>.tree-column,
+.ace_tree-light .tree-row.selected>.tree-column {
+  background: 0 0;
+}
+.notificationstree .tree-row {
+  pointer-events: auto;
+}
+.notificationstree .btn-default-css3 .caption {
+  pointer-events: none;
+  color: #002b36;
+  border: 0;
+  border: 1px solid #073642;
+}
+.cool_tooltip_cursor {
+  border: 0;
+}
+.ace_button {
+  pointer-events: auto;
+}
+.ace_button.disabled,
+.ace_layer {
+  pointer-events: none;
+}
+.ace_gutter-layer,
+.ace_line .ace_fold {
+  pointer-events: auto;
+}
+.ace_diff.inline:after {
+  background: 0 0;
+}
+.ace_diff.inline {
+  background: 0 0;
+}
+.ace_dark .ace_diff.inline {
+  background: 0 0;
+}
+.diff-arrow {
+  border: 6px double;
+  color: #808080;
+}
+.ace_editor {
+  direction: ltr;
+}
+.ace_scroller {
+  background-color: #002b36 !important;
+}
+.ace_text-input {
+  background: 0 0;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  resize: none;
+  text-indent: -1em;
+}
+.ace_layer {
+  word-wrap: normal;
+}
+.ace_tooltip,
+.bk-window .bk-container h3,
+.filetree .message,
+.searchresults .item .path {
+  word-wrap: break-word;
+}
+.ace_tooltip {
+  letter-spacing: normal;
+  pointer-events: none;
+}
+.filetree .status-icon.clickable,
+.stack-message {
+  pointer-events: auto;
+}
+.ace_fold-widget {
+  border: 1px solid transparent;
+}
+.ace_br1,
+.ace_br11,
+.ace_br13,
+.ace_br3,
+.ace_br5,
+.ace_br7,
+.ace_br9 {
+  border-top-left-radius: 3px;
+}
+.ace_br10,
+.ace_br11,
+.ace_br14,
+.ace_br2,
+.ace_br3,
+.ace_br6,
+.ace_br7 {
+  border-top-right-radius: 3px;
+}
+.ace_br12,
+.ace_br13,
+.ace_br14,
+.ace_br4,
+.ace_br5,
+.ace_br6,
+.ace_br7 {
+  border-bottom-right-radius: 3px;
+}
+.ace_br10,
+.ace_br11,
+.ace_br12,
+.ace_br13,
+.ace_br14,
+.ace_br8,
+.ace_br9 {
+  border-bottom-left-radius: 3px;
+}
+.ace-tm .ace_marker-layer .ace_bracket {
+  border: 1px solid #c0c0c0;
+}
+.difftoolbar .buttons {
+  border: 1px solid #073642;
+}
+.c9-mbar-round,
+.disableIframe iframe,
+.filetree.dragImage .toggler,
+.split-area,
+.uploadDropArea>*,
+BODY.noInput * {
+  pointer-events: none;
+}
+.btnName.c9-menu-btnIcon {
+  text-indent: -2000px;
+}
+.bar-preferences .navigation,
+.bar-preferences .navigation .level1.active,
+.bar-preferences .navigation .level1>a:hover,
+.bar-preferences .navigation .level3 a:hover {
+  background: #002b36;
+}
+.bar-preferences .container .header {
+  background-color: #002b36;
+}
+.bar-preferences,
+.bar-preferences .container>.basic,
+.bar-preferences .container>.hsplitbox,
+.prefpanel {
+  background: #073642;
+}
+.bar-preferences .tbsimpleFocus {
+  border: 1px solid #073642;
+}
+.bar-preferences .taFocus {
+  border: 1px solid #073642;
+}
+.bar-preferences .blackdg .tree-headings {
+  background: #002b36;
+}
+.bar-preferences .blackdgFocus {
+  border: 1px solid transparent;
+}
+.bar-preferences .blackdg .ace-tm .ace_marker-layer .ace_active-line,
+.bar-preferences .keybindings .blackdg .ace_tree_cells .group>span:nth-child(2),
+.bar-preferences .keybindings .blackdg .tree-row>span:nth-child(2),
+.splits {
+  background: 0 0;
+}
+.thingy-popup .balloon {
+  -webkit-clip-path: polygon(0 0, 100% 0, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+.welcome .black_dropdown {
+  background: 0 0;
+}
+.welcome .preset_container .preset {
+  border: 1px solid transparent;
+  background: 50% 50% no-repeat;
+}
+.ace_static_highlight {
+  counter-reset: ace_line;
+}
+.ace_static_highlight .ace_gutter-cell:before {
+  counter-increment: ace_line;
+}
+.toolbar-top.previewbar {
+  background: #002b36;
+}
+.installer .choice li {
+  list-style-type: none;
+}
+.installer .execute {
+  background: 0 0;
+}
+.panelsbar,
+.panelsbutton:hover,
+.panelsbuttonDown,
+.panelsbuttonDown:hover {
+  background: #002b36;
+}
+.installer .execute .log .output {
+  color: #808080;
+}
+.installer .execute .log .error {
+  color: #cb4b16;
+}
+.outline.ace_tree {
+  border: none;
+  background: 0 0;
+}
+.outline.ace_tree .tree-row.selected {
+  background: #002b36;
+}
+.searchresults .item {
+  background: 0 0;
+}
+.searchresults .message {
+  border: 0;
+}
+.filetree.ace_tree {
+  background: 0 0;
+  border: none;
+}
+.filetree .tree-row {
+  background: 0 0;
+}
+.filetree .tree-row.selected {
+  background: #002b36;
+}
+.filetree .message {
+  border: 0;
+  background: 0 0;
+}
+.find-and-replace,
+HTML {
+  background: #002b36;
+}
+.bk-window,
+.bk-window .bk-content,
+.bk-window .bk-win-footer {
+  background: #073642;
+}
+.bk-window.dark .bk-content {
+  background-color: #073642;
+}
+.blackbutton {
+  border: 1px solid transparent;
+}
+.blackdg .tree-headings {
+  background: #002b36;
+}
+.blackdg .records .row,
+.blackdg .records .row span,
+.tree-headings>.tree-column {
+  background: 0 0;
+}
+.blackdg .size_pointer {
+  border: 1px dotted #808080;
+}
+.blackdg .ace_tree-editor,
+.blackdg span.treecell u {
+  border: 0;
+}
+.blackdg .selected,
+.blackdgDisabled .selected {
+  background-color: #002b36;
+}
+.black_dropdown {
+  border: 1px solid transparent;
+}
+.btn-default-css3Disabled.btn-red {
+  color: #800000;
+}
+.btn_console {
+  border: 1px solid transparent;
+}
+.btn_console div {
+  background: 50% 50% no-repeat;
+}
+.btn-switcher,
+.c9-menu-bar .c9-mbar-cont {
+  background: #002b36;
+}
+.btn-switcher {
+  -webkit-align-items: center;
+  align-items: center;
+  border: 1px solid transparent;
+}
+.c9-mbar-round .mainlogo {
+  pointer-events: all;
+  text-indent: 100%;
+}
+.c9-menu-bar .c9-mbar-bcont .c9-activity {
+  pointer-events: all;
+}
+.c9-menu-bar.minimized .c9-mbar-bcont .c9-mbar-minimize,
+.c9-menu-bar.minimized .c9-mbar-cont,
+.c9-menu-btnOver {
+  background-color: #002b36;
+}
+.c9-menu-btnDown {
+  border: 1px solid #073642;
+}
+.c9-menu-btnDisabled {
+  color: #808080;
+}
+.c9-toolbarbutton-glossy {
+  border: 1px solid transparent;
+}
+.btnSave .c9-icon {
+  border: 1px solid #073642;
+}
+.c9-toolbarbutton {
+  border: 1px solid transparent;
+}
+.c9-toolbarbuttonOver {
+  border: 1px solid #073642;
+}
+.c9-toolbarbuttonDown {
+  border: 1px solid #073642;
+}
+.c9-toolbarbutton-light {
+  border: 1px solid transparent;
+}
+.editor_tab .btnsesssioncontainer {
+  background: #002b36;
+  border: 1px solid #073642;
+  clip: rect(0, 3000px, 35px, 0);
+}
+.session_btn .tab_middle:after,
+.session_btn .tab_middle:before {
+  -webkit-mask: url("/static/plugins/c9.ide.layout.classic/images/c9-no-repeat_flat_dark@2x.png") no-repeat;
+  -webkit-mask-size: 480px 580px;
+}
+.session_btn:not(.curbtn) .tab_middle,
+.session_btn:not(.curbtn) .tab_middle:after,
+.session_btn:not(.curbtn) .tab_middle:before {
+  background-color: #002b36 !important;
+}
+.session_btn:not(.curbtn) .tab_middle.over,
+.session_btn:not(.curbtn) .tab_middle:after.over,
+.session_btn:not(.curbtn) .tab_middle:before.over {
+  background-color: #073642 !important;
+}
+.focus.session_btn.curbtn .sessiontab_title {
+  letter-spacing: -0.4px;
+}
+.has_apf .plus_tab_button,
+.has_apf .tabmenubtn,
+.has_apf .tabmenubtn.c9-simple-btnOver,
+.plus_tab_button.c9-simple-btnDown,
+.plus_tab_button.c9-simple-btnOver {
+  border: 1px solid transparent;
+}
+.tabsContextMenu:before {
+  pointer-events: none;
+}
+.ace_repl_button,
+.c9terminalcontainer .cover-link,
+.listBP .btnclose,
+.listBP .checkbox {
+  pointer-events: auto;
+}
+.codeditorHolder .editor_tab {
+  background: #002b36;
+}
+.searchbox .sbtb_middle .input,
+.tb_textbox .sbtb_middle INPUT {
+  border: 0;
+}
+.has_apf .vimInput .sbtb_middle {
+  border: none;
+}
+.tb_console .sbtb_middle {
+  border: 1px solid transparent;
+}
+.consoleInputCloned,
+.tb_console .sbtb_middle INPUT {
+  border: 0;
+}
+.ace_editor .tb_textboxInitialMsg {
+  text-indent: 5px;
+}
+.noscrollbar .datagrid {
+  background: transparant;
+}
+.datagrid .size_pointer {
+  border: 1px dotted #808080;
+}
+.datagrid blockquote {
+  background: 0 center repeat-y;
+}
+.datagrid .records span.treecell u,
+.datagrid .tb,
+.datagrid .treecell .tb {
+  border: 0;
+}
+.datagrid .records {
+  border-style: solid;
+}
+.divider-status-bar {
+  border: none;
+}
+.dark .divider-status-bar {
+  background: 0 0;
+}
+.dropdown-dark-glossy {
+  border: 1px solid transparent;
+}
+.dropdown .dropdownArrow {
+  -webkit-border-top-right-radius: 2px;
+  -webkit-border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+.dropdownFocus .dropdownArrow {
+  background: 0 0;
+}
+.optionList .dditem:first-child {
+  -webkit-border-top-left-radius: 4px;
+  -webkit-border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.optionList .dditem:last-child {
+  -webkit-border-bottom-right-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.errorbox .errbox_arrow {
+  border: 0;
+}
+.frame>.title {
+  background-color: #002b36;
+}
+.grouped_checkbox_holder .cbcontainerChecked,
+.grouped_checkbox_holder .cbcontainerDown,
+.grouped_checkbox_holder.with_caption .cbcontainer .checkbox {
+  background: 0 0;
+}
+.grouped_checkbox_holder {
+  border: 1px solid transparent;
+}
+.grouped_checkbox_holder .cbcontainer .checkbox {
+  border: 0;
+}
+.draglist SPAN,
+.list>DIV>SPAN {
+  background: 1px center no-repeat;
+}
+.shortlist {
+  border: 0;
+}
+.panel-bar {
+  background: #002b36;
+}
+.right .panel-bar:after {
+  background: 0 0;
+}
+body .scrollbar .btndowndown div,
+body .scrollbar .btnupdown div {
+  border: 1px solid #808080;
+}
+.spinnerFocus {
+  border: 1px solid #073642;
+}
+.spinner .divfix {
+  border: 0;
+}
+.spinner .divfix input {
+  border: 0;
+  background: 0 0;
+}
+.spinner .buttons .minus,
+.spinner .buttons .plus {
+  border: 0;
+  background: 0 0;
+  text-indent: 0;
+}
+.splitterMoving {
+  background-color: #808080;
+}
+.colMain .splitter.vertical,
+.splitter.horizontal {
+  background: #073642;
+}
+.dark.colMain .splitter.vertical {
+  background: #073642;
+  border: 1px solid #073642;
+}
+.toolbar-top,
+.tooltipLabel {
+  background-color: #002b36;
+}
+.tbsimple {
+  border: 0;
+}
+.ta,
+.taDisabled {
+  border: 1px solid #073642;
+}
+.ta {
+  resize: none;
+}
+.taInitial {
+  color: #808080;
+}
+.tooltipLabel {
+  border: 1px solid #073642;
+}
+.output .toolbar {
+  background: 0 0;
+}
+.output .c9terminal .c9terminalcontainer,
+.output .c9terminal .c9terminalcontainer .terminal,
+.output .c9terminal .c9terminalcontainer .terminal .ace_selection {
+  text-indent: 0;
+}
+.terminal_monitor_message {
+  border: 1px solid #073642;
+}
+.ace_repl_button:hover {
+  border: 1px solid #808080;
+  pointer-events: auto;
+}
+.repl_lineWidgetContainer {
+  border: 1px solid #808080;
+}
+.immediate .ace_lineWidgetContainer {
+  border: 0;
+  background: 0 0;
+}
+.immediate .treeitem .arrow {
+  text-indent: -2000px;
+}
+.ace_lineWidgetContainer:after,
+.ace_lineWidgetContainer:before {
+  background: 0 0;
+}
+.immediate .ace_dark .null {
+  color: #808080;
+}
+.immediate .ace_dark .stack a {
+  color: #808080;
+}
+.condition_dialog>.input {
+  border: 0;
+}
+.listBP .bpItem.hover,
+.listBP .bpItem:hover {
+  background-color: #002b36;
+}
+.listBP .message.empty {
+  color: #808080;
+}
+.code_complete_text.dark .ace_line,
+.code_complete_text.dark .ace_line.ace_selected span {
+  color: #002b36;
+}
+.language_tooltip {
+  pointer-events: none;
+}
+.code_complete_text.ace_autocomplete {
+  border: 1px solid #073642;
+}
+.code_complete_text.dark.ace_autocomplete {
+  background: #002b36;
+}
+.code_complete_text .ace_line {
+  background: 0 0;
+  pointer-events: auto;
+}
+.code_complete_text.dark .ace_line-hover {
+  background: #002b36;
+  color: #002b36;
+}
+.bk-window.login .bg-bk-content {
+  background-color: #002b36;
+}
+.disconnectlabel,
+.errorlabel {
+  pointer-events: none;
+}
+.disconnectlabel div,
+.errorlabel div {
+  pointer-events: auto;
+  word-wrap: break-word;
+}
+.infolabel.errorlabel div {
+  background: #073642;
+}
+.ace_treeDragImage .toggler,
+.scroll_shadow {
+  pointer-events: none;
+}
+.ace_tree .tree-row .checkbox,
+.openfiles .ace_tree .tree-row strong.close {
+  pointer-events: auto;
+}
+.custom-tree.ace_tree {
+  background: 0 0;
+  border: none;
+}
+.custom-tree.ace_tree .tree-row {
+  background: 0 0;
+}
+.custom-tree.ace_tree .tree-row.selected {
+  background: #002b36;
+}
+.custom-tree.ace_tree .message {
+  border: 0;
+  background: 0 0;
+  word-wrap: break-word;
+}
+.btnquicksearchnav .btnDivider {
+  border-style: none solid;
+}
+.gotolinelist {
+  border-style: solid;
+}
+.barGotoline {
+  border: 1px solid #073642;
+}
+.tbGotoline .sbtb_middle {
+  border-style: solid;
+}
+.tbGotoline .sbtb_middle INPUT {
+  border: 0;
+}
+.scroll_shadow {
+  border-top-left-radius: 4px;
+}
+.ace_progress.upload {
+  background: 0 0;
+}
+.openfiles {
+  background: #002b36;
+}
+.imgtoolbar {
+  background-color: #002b36;
+}
+.bartools .c9-toolbarbutton-glossy,
+.bartools .c9-toolbarbutton-glossyOver {
+  border: 0;
+}
+.c9-menu-btnDown:not(.c9-menu-btnmenuDown) {
+  border: 0;
+}
+.console>.hbox>.btn_consoleDown,
+.console>.hbox>.btn_consoleOver {
+  border: 1px solid transparent;
+}
+.c9-toolbarbutton-glossy.saved .c9-label,
+.c9-toolbarbutton-glossy.saving .c9-label {
+  background: 0 0;
+}
+.grouped_checkbox_holder.mount .cbcontainerFocus span,
+.has_apf .toolbar-top .sbtb_middle,
+.toolbar-top.basic .c9-menu-btnDown.scripts {
+  border: 0;
+}
+.bartools .c9-toolbarbutton-glossyOver {
+  background: #002b36;
+}
+.has_apf .bar-preferences .blackdg {
+  border: 0;
+}
