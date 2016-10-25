@@ -88,7 +88,6 @@ augroup END
 
 
 " Close vim if there are no more buffers open
-" :autocmd BufDelete * if len(filter(range(1, bufnr('$')), '!empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
 
 " include dashes in completion
 set iskeyword+=-
