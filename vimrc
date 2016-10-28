@@ -5,33 +5,47 @@ filetype off
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'lambdatoast/elm.vim'
-Plug 'mattn/emmet-vim'
-Plug 'Yggdroot/indentLine'
-Plug 'itchyny/lightline.vim'
-Plug 'ervandew/supertab'
-Plug 'leafgarland/typescript-vim'
-Plug 'ap/vim-buftabline'
-Plug 'kchmck/vim-coffee-script'
 Plug 'altercation/vim-colors-solarized'
+Plug 'ap/vim-buftabline'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'guns/xterm-color-table.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/vim-easy-align'
+Plug 'kana/vim-textobj-user'
+Plug 'lifepillar/vim-mucomplete'
+Plug 'mattn/emmet-vim'
+Plug 'mattn/vim-textobj-url'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
-Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-fugitive'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'digitaltoad/vim-jade'
-Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'Yggdroot/indentLine'
+
+" Snippets
+
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" Syntax
+
+" JS
+Plug 'kchmck/vim-coffee-script'
+Plug 'lambdatoast/elm.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'pangloss/vim-javascript'
+
+" HTML
+Plug 'digitaltoad/vim-jade'
 Plug 'slim-template/vim-slim'
 Plug 'slm-lang/vim-slm'
-Plug 'wavded/vim-stylus'
+
+" CSS
 Plug 'hhsnopek/vim-sugarss'
-Plug 'tpope/vim-surround'
-Plug 'mattn/vim-textobj-url'
-Plug 'kana/vim-textobj-user'
-Plug 'guns/xterm-color-table.vim'
+Plug 'wavded/vim-stylus'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -48,8 +62,7 @@ set autoread
 " Trigger autoread when changing buffers or coming back to vim in terminal.
 au FocusGained,BufEnter * :silent! !
 
-let $XIKI_DIR = "~/xiki-project"
-source ~/xiki-project/misc/vim/xiki.vim
+let g:mucomplete#enable_auto_at_startup = 1
 
 "NeoVim handles ESC keys as alt+key, set this to solve the problem
 if has('nvim')
@@ -58,36 +71,38 @@ if has('nvim')
 endif
 
 let g:indentLine_char = '┆'
-let g:indentLine_char = '│'
+" let g:indentLine_char = '│'
 
 " Colors
 set background=dark
 colorscheme solarized
 
-" Use emmet for tab in xml, html, etc. files
-" autocmd FileType html,svg,css,scss,sass imap <buffer> <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
-"
-
 autocmd BufRead,BufNewFile *.sgr set ft=pug
 " Fixes bug where Vim thinks doctype means html
 autocmd BufRead,BufNewFile *.slim set ft=slim
 
-function! Emmet_or_ultisnip()
-  echo 'running function'
+let g:UltiSnipsExpandTrigger="<C-J>"
+let g:UltiSnipsJumpForwardTrigger="<C-J>"
+let g:UltiSnipsJumpBackwardTrigger="<C-K>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsSnippetDirectories=["~/UltiSnips"]
 
-  if ((&ft=='html' || &ft=='xml' || &ft=='svg' || &ft=='css' || &ft=='scss' || &ft=='sass') && emmet#isExpandable())
-    return "\<plug>(emmet-expand-abbr)"
-  else
-    return "\<plug>SuperTabForward"
-  endif
-endfunction
+" function! Emmet_or_ultisnip()
+"   echo 'running function'
 
-augroup DisableMappings
-  autocmd! VimEnter * :imap <expr> <tab> Emmet_or_ultisnip()
-augroup END
+"   if ((&ft=='html' || &ft=='xml' || &ft=='svg' || &ft=='css' || &ft=='scss' || &ft=='sass') && emmet#isExpandable())
+"     return "\<plug>(emmet-expand-abbr)"
+"   else
+"     return "\<plug>SuperTabForward"
+"   endif
+" endfunction
 
+" augroup DisableMappings
+"   autocmd! VimEnter * :imap <expr> <tab> Emmet_or_ultisnip()
+" augroup END
 
-" Close vim if there are no more buffers open
 
 " include dashes in completion
 set iskeyword+=-
@@ -144,15 +159,6 @@ noremap - <C-x>
 " Align markdown tables with tab
 au FileType markdown vmap <tab> :EasyAlign*<Bar><Enter>
 au FileType markdown map <Bar> vip :EasyAlign*<Bar><Enter>
-
-" " Complete properly
-" au FileType php setl ofu=phpcomplete#CompletePHP
-" au FileType ruby,eruby setl ofu=rubycomplete#Complete
-" au FileType slim,html,xhtml setl ofu=htmlcomplete#CompleteTags
-" au FileType c setl ofu=ccomplete#CompleteCpp
-" au FileType scss,sass,css setl ofu=csscomplete#CompleteCSS
-
-let g:SuperTabDefaultCompletionType = 'context'
 
 " Show hidden files
 let g:ctrlp_show_hidden = 1
@@ -383,7 +389,7 @@ autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd FileType markdown,gitcommit setlocal spell
 
 " Autocomplete with dictionary words when spell check is on
-set complete+=kspell
+" set complete+=kspell
 set spellfile=$HOME/.vim-spell-en.utf-8.add
 
 " Change cursor shape on entering insert or replace mode
