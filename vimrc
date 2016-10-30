@@ -37,22 +37,23 @@ Plug 'Yggdroot/indentLine'
 " Plug 'honza/vim-snippets'
 
 " Syntax
+Plug 'sheerun/vim-polyglot'
+" " JS
+" Plug 'kchmck/vim-coffee-script' ", { 'for': [ 'coffee', 'cjsx'] }
+" Plug 'mtscout6/vim-cjsx' ", { 'for': 'cjsx' }
+" Plug 'lambdatoast/elm.vim', { 'for': 'elm' }
+" Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
+" Plug 'pangloss/vim-javascript', { 'for': [ 'js', 'es6' ] }
 
-" JS
-Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
-Plug 'lambdatoast/elm.vim', { 'for': 'elm' }
-Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
-Plug 'pangloss/vim-javascript', { 'for': [ 'js', 'es6' ] }
+" " HTML
+" Plug 'digitaltoad/vim-jade', { 'for': 'jade' }
+" Plug 'slim-template/vim-slim', { 'for': 'slim' }
+" Plug 'slm-lang/vim-slm', { 'for': 'slm' }
+" Plug 'tpope/vim-markdown', { 'for': [ 'md', 'marked', 'markdown' ] }
 
-" HTML
-Plug 'digitaltoad/vim-jade', { 'for': 'jade' }
-Plug 'slim-template/vim-slim', { 'for': 'slim' }
-Plug 'slm-lang/vim-slm', { 'for': 'slm' }
-Plug 'tpope/vim-markdown', { 'for': [ 'md', 'marked', 'markdown' ] }
-
-" CSS
-Plug 'hhsnopek/vim-sugarss', { 'for': 'sss' }
-Plug 'wavded/vim-stylus', { 'for': [ 'styl', 'stylus' ] }
+" " CSS
+" Plug 'hhsnopek/vim-sugarss', { 'for': 'sss' }
+" Plug 'wavded/vim-stylus', { 'for': [ 'styl', 'stylus' ] }
 
 " Add plugins to &runtimepath
 call plug#end()
