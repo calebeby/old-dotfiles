@@ -5,21 +5,27 @@ filetype off
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'guns/xterm-color-table.vim'
 Plug 'ap/vim-buftabline'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'guns/xterm-color-table.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'flazz/vim-colorschemes'
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-user'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'mattn/emmet-vim'
 Plug 'mattn/vim-textobj-url'
+Plug 'sgur/vim-textobj-parameter'
+" Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -27,25 +33,26 @@ Plug 'Yggdroot/indentLine'
 
 " Snippets
 
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 
 " Syntax
 
 " JS
-Plug 'kchmck/vim-coffee-script'
-Plug 'lambdatoast/elm.vim'
-Plug 'leafgarland/typescript-vim'
-Plug 'pangloss/vim-javascript'
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
+Plug 'lambdatoast/elm.vim', { 'for': 'elm' }
+Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
+Plug 'pangloss/vim-javascript', { 'for': [ 'js', 'es6' ] }
 
 " HTML
-Plug 'digitaltoad/vim-jade'
-Plug 'slim-template/vim-slim'
-Plug 'slm-lang/vim-slm'
+Plug 'digitaltoad/vim-jade', { 'for': 'jade' }
+Plug 'slim-template/vim-slim', { 'for': 'slim' }
+Plug 'slm-lang/vim-slm', { 'for': 'slm' }
+Plug 'tpope/vim-markdown', { 'for': [ 'md', 'marked', 'markdown' ] }
 
 " CSS
-Plug 'hhsnopek/vim-sugarss'
-Plug 'wavded/vim-stylus'
+Plug 'hhsnopek/vim-sugarss', { 'for': 'sss' }
+Plug 'wavded/vim-stylus', { 'for': [ 'styl', 'stylus' ] }
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -62,7 +69,11 @@ set autoread
 " Trigger autoread when changing buffers or coming back to vim in terminal.
 au FocusGained,BufEnter * :silent! !
 
-let g:mucomplete#enable_auto_at_startup = 1
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+" let g:mucomplete#enable_auto_at_startup = 1
 
 "NeoVim handles ESC keys as alt+key, set this to solve the problem
 if has('nvim')
@@ -73,36 +84,41 @@ endif
 let g:indentLine_char = '┆'
 " let g:indentLine_char = '│'
 
+map <space> <Plug>(easymotion-prefix)
+
 " Colors
+let color = 'solarized'
+" colorscheme &color
+exec "colorscheme ".color 
 set background=dark
-colorscheme solarized
 
 autocmd BufRead,BufNewFile *.sgr set ft=pug
 " Fixes bug where Vim thinks doctype means html
 autocmd BufRead,BufNewFile *.slim set ft=slim
 
-let g:UltiSnipsExpandTrigger="<C-J>"
-let g:UltiSnipsJumpForwardTrigger="<C-J>"
-let g:UltiSnipsJumpBackwardTrigger="<C-K>"
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsSnippetDirectories=["~/UltiSnips"]
+" let g:UltiSnipsExpandTrigger="<C-J>"
+" let g:UltiSnipsJumpForwardTrigger="<C-J>"
+" let g:UltiSnipsJumpBackwardTrigger="<C-K>"
+" " let g:UltiSnipsExpandTrigger="<tab>"
+" " let g:UltiSnipsJumpForwardTrigger="<tab>"
+" " let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" let g:UltiSnipsSnippetDirectories=["~/UltiSnips"]
 
-" function! Emmet_or_ultisnip()
+" function! Complete_or_snippet()
 "   echo 'running function'
 
-"   if ((&ft=='html' || &ft=='xml' || &ft=='svg' || &ft=='css' || &ft=='scss' || &ft=='sass') && emmet#isExpandable())
-"     return "\<plug>(emmet-expand-abbr)"
+"   if len(UltiSnips#SnippetsInCurrentScope()) == 0
+"     return "\<plug>(MUcompleteFwd)"
 "   else
-"     return "\<plug>SuperTabForward"
+"     " call "\<plug>(UltiSnips#ExpandSnippet)"
+"     " call feedkeys("\<C-J>")
+"     return UltiSnips#ExpandSnippet()
 "   endif
 " endfunction
 
 " augroup DisableMappings
-"   autocmd! VimEnter * :imap <expr> <tab> Emmet_or_ultisnip()
+"   autocmd! VimEnter * :imap <expr> <tab> Complete_or_snippet()
 " augroup END
-
 
 " include dashes in completion
 set iskeyword+=-
@@ -257,7 +273,6 @@ hi BufTabLineFill ctermfg=8 ctermbg=8 cterm=NONE
 hi BufTabLineActive ctermfg=14 ctermbg=8 cterm=bold
 
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [
       \     [ 'mode', 'paste' ],
@@ -295,6 +310,8 @@ let g:lightline = {
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' },
       \}
+
+let g:lightline.colorscheme = color
 
 function! LightLineModified()
   return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
