@@ -59,6 +59,7 @@ alias install='yaourt -S'
 alias uninstall='yaourt -Rs'
 alias remove='yaourt -Rs'
 alias coala='coala -n'
+alias open='xdg-open'
 alias update='yaourt -Syu && yaourt -Su --aur; upgrade_oh_my_zsh'
 alias alert='notify-send -i urxvt "[$?] $(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/;\s*alert$//'\'')"'
 # alias avg="for i in {1..10}; do /usr/bin/time -p $1; done 2>&1 | ag real | sed -e 's/real //' | awk '{sum += $1} END {print sum / NR}'"
