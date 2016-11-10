@@ -8,6 +8,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'guns/xterm-color-table.vim'
 Plug 'ap/vim-buftabline'
+Plug 'neomake/neomake'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
@@ -16,12 +17,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'kana/vim-textobj-line'
-Plug 'kana/vim-textobj-user'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'mattn/emmet-vim'
-Plug 'mattn/vim-textobj-url'
-Plug 'sgur/vim-textobj-parameter'
 " Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
@@ -31,6 +28,15 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'Yggdroot/indentLine'
 
+" Text objects
+Plug 'kana/vim-textobj-user'
+" Plug 'kana/vim-textobj-function'
+" Plug 'kana/vim-textobj-indent'
+" Plug 'glts/vim-textobj-indblock'
+Plug 'kana/vim-textobj-line'
+Plug 'mattn/vim-textobj-url'
+Plug 'sgur/vim-textobj-parameter'
+
 " Snippets
 
 " Plug 'SirVer/ultisnips'
@@ -38,22 +44,7 @@ Plug 'Yggdroot/indentLine'
 
 " Syntax
 Plug 'sheerun/vim-polyglot'
-" " JS
-" Plug 'kchmck/vim-coffee-script' ", { 'for': [ 'coffee', 'cjsx'] }
-" Plug 'mtscout6/vim-cjsx' ", { 'for': 'cjsx' }
-" Plug 'lambdatoast/elm.vim', { 'for': 'elm' }
-" Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
-" Plug 'pangloss/vim-javascript', { 'for': [ 'js', 'es6' ] }
-
-" " HTML
-" Plug 'digitaltoad/vim-jade', { 'for': 'jade' }
-" Plug 'slim-template/vim-slim', { 'for': 'slim' }
-" Plug 'slm-lang/vim-slm', { 'for': 'slm' }
-" Plug 'tpope/vim-markdown', { 'for': [ 'md', 'marked', 'markdown' ] }
-
-" " CSS
-" Plug 'hhsnopek/vim-sugarss', { 'for': 'sss' }
-" Plug 'wavded/vim-stylus', { 'for': [ 'styl', 'stylus' ] }
+Plug 'slm-lang/vim-slm', { 'for': 'slm' }
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -66,6 +57,13 @@ set autowrite
 
 " Reload files changed outside vim
 set autoread
+
+" Trigger Neomake on save
+autocmd! BufWritePost * Neomake
+
+" let g:neomake_coffee_coffeelint_maker = {
+"   \ 'args': 
+" }
 
 " Trigger autoread when changing buffers or coming back to vim in terminal.
 au FocusGained,BufEnter * :silent! !
