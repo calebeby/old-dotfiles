@@ -5,21 +5,24 @@ filetype off
 
 call plug#begin('~/.vim/plugged')
 
-" Plug 'altercation/vim-colors-solarized'
-" Plug 'guns/xterm-color-table.vim'
+Plug 'guns/xterm-color-table.vim'
 Plug 'ap/vim-buftabline'
-Plug 'neomake/neomake'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'easymotion/vim-easymotion'
+" Plug 'neomake/neomake'
+" Plug 'christoomey/vim-tmux-navigator'
+" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+" Plug 'easymotion/vim-easymotion'
 Plug 'flazz/vim-colorschemes'
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/limelight.vim'
+" Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'lifepillar/vim-mucomplete'
-Plug 'mattn/emmet-vim'
+" Plug 'mattn/emmet-vim'
+Plug 'janko-m/vim-test'
 " Plug 'terryma/vim-multiple-cursors'
+Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
@@ -58,13 +61,6 @@ set autowrite
 " Reload files changed outside vim
 set autoread
 
-" Trigger Neomake on save
-autocmd! BufWritePost * Neomake
-
-" let g:neomake_coffee_coffeelint_maker = {
-"   \ 'args': 
-" }
-
 " Trigger autoread when changing buffers or coming back to vim in terminal.
 au FocusGained,BufEnter * :silent! !
 
@@ -86,7 +82,7 @@ let g:indentLine_char = '┆'
 map <space> <Plug>(easymotion-prefix)
 
 " Colors
-let color = 'solarized'
+let color = 'gruvbox'
 " colorscheme &color
 exec "colorscheme ".color 
 set background=dark
@@ -168,6 +164,8 @@ imap <down> <NOP>
 imap <left> <NOP>
 imap <right> <NOP>
 
+noremap <c-q> :xall<CR>
+
 noremap + <C-a>
 noremap - <C-x>
 
@@ -178,7 +176,10 @@ au FileType markdown map <Bar> vip :EasyAlign*<Bar><Enter>
 " Show hidden files
 let g:ctrlp_show_hidden = 1
 
-if executable('ag')
+if executable('rg')
+  let g:ctrlp_user_command = 'rg --files --hidden %s""'
+  let g:ctrlp_use_caching = 0
+elseif executable('ag')
   let g:ctrlp_user_command = 'ag --ignore-case --nogroup --hidden --follow
         \ -U -p ~/.agignore
         \ -l -m 50000
@@ -237,7 +238,7 @@ set tabstop=2
 set hidden
 
 " Open a new file in a new buffer
-nmap <C-t> :CtrlP<F5><CR>
+nmap <C-t> :FZF<CR>
 vmap <C-t> <Esc><C-t>gv
 imap <C-t> <Esc><C-t>
 
@@ -246,16 +247,7 @@ nmap <c-s> :up<CR>
 vmap <c-s> <Esc>:up<CR>gv
 imap <c-s> <Esc>:up<CR>a
 
-nnoremap <C-Q> <C-W>
-
-" Close file
-nmap <c-w> :up \| :bd<CR>
-vmap <c-w> <Esc><c-w>
-imap <c-w> <Esc><c-w>
-
 set hidden
-nnoremap <C-M> :bnext<CR>
-nnoremap <C-N> :bprev<CR>
 
 function! Current_git_branch()
   let l:branch = split(fugitive#statusline(),'[()]')
@@ -266,10 +258,10 @@ function! Current_git_branch()
 endfunction
 
 let g:buftabline_indicators = 1
-hi BufTabLineCurrent ctermfg=14 ctermbg=0 cterm=bold
-hi BufTabLineHidden ctermfg=10 ctermbg=8 cterm=NONE
-hi BufTabLineFill ctermfg=8 ctermbg=8 cterm=NONE
-hi BufTabLineActive ctermfg=14 ctermbg=8 cterm=bold
+hi BufTabLineCurrent ctermfg=15 ctermbg=236 cterm=bold
+hi BufTabLineHidden ctermfg=7 ctermbg=0 cterm=NONE
+hi BufTabLineFill ctermfg=7 ctermbg=0 cterm=NONE
+hi BufTabLineActive ctermfg=15 ctermbg=0 cterm=bold
 
 let g:lightline = {
       \ 'active': {
@@ -439,6 +431,37 @@ set fillchars+=vert:│
 
 hi VertSplit ctermbg=NONE guibg=NONE
 
+nnoremap <tab>   :bnext<CR>
+nnoremap <s-tab> :bprev<CR>
+
+autocmd BufWinEnter,WinEnter term://* startinsert
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 if has('nvim')
-  nmap <bs> :<c-u>TmuxNavigateLeft<cr>
+  tmap <c-e>   <c-\><c-n>
+  tmap <tab>   <c-e>:bnext<CR>
+  tmap <s-tab> <c-e>:bprev<CR>
+  tmap : <c-e>:
+  tmap <esc> :bd!<CR>
+
+  tmap <c-j> <c-e><c-j>
+  tmap <c-k> <c-e><c-k>
+  tmap <c-l> <c-e><c-l>
+  tmap <c-h> <c-e><c-h>
+
+  tmap <c-q> <c-e><c-q>
+  let test#strategy = "neovim"
 endif
+
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
+
+" Close file
+nmap zz :up \| :bd<CR>

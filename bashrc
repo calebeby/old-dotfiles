@@ -194,3 +194,5 @@ export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 source ~/.xsh
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
