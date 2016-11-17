@@ -1,3 +1,5 @@
+source ~/.bash_profile
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -190,7 +192,4 @@ export PATH="$NPM_PACKAGES/bin:$PATH"
 # command
 unset MANPATH  # delete if you already modified MANPATH elsewhere in your config
 export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
-
-
-source ~/.xsh
 

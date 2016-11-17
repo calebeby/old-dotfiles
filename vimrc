@@ -28,6 +28,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'Yggdroot/indentLine'
 
+Plug 'davidhalter/jedi-vim'
+
 " Text objects
 Plug 'kana/vim-textobj-user'
 " Plug 'kana/vim-textobj-function'

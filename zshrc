@@ -23,7 +23,7 @@ export BROWSER='google-chrome-stable'
 #fi
 
 # Disable beep
-xset -b
+which xset && xset -b
 
 # Show contents of directory after cd-ing into it
 chpwd() {
@@ -39,7 +39,7 @@ SAVEHIST=20000
 
 # Aliases
 
-alias git='hub'
+which hub && alias git='hub'
 alias p="~/Podcasts/bashpodder.sh && ~/Podcasts/speedup.sh"
 alias t="~/Podcasts/transfer.sh"
 alias cat='fun () {highlight -O ansi -i $1 2>/dev/null || command cat $1;}; fun'
@@ -81,29 +81,29 @@ export QT_STYLE_OVERRIDE='gtk'
 
 # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 preexec () {
-    # Note the date when the command started, in unix time.
-    CMD_START_DATE=$(date +%s)
-    # Store the command that we're running.
-    CMD_NAME=$1
+  # Note the date when the command started, in unix time.
+  CMD_START_DATE=$(date +%s)
+  # Store the command that we're running.
+  CMD_NAME=$1
 }
 precmd () {
-    # Proceed only if we've ran a command in the current shell.
-    if ! [[ -z $CMD_START_DATE ]]; then
-        # Note current date in unix time
-        CMD_END_DATE=$(date +%s)
-        # Store the difference between the last command start date vs. current date.
-        CMD_ELAPSED_TIME=$(($CMD_END_DATE - $CMD_START_DATE))
-        # Store an arbitrary threshold, in seconds.
-        CMD_NOTIFY_THRESHOLD=5
-        commands=(nvim tmux)
+  # Proceed only if we've ran a command in the current shell.
+  if ! [[ -z $CMD_START_DATE ]]; then
+    # Note current date in unix time
+    CMD_END_DATE=$(date +%s)
+    # Store the difference between the last command start date vs. current date.
+    CMD_ELAPSED_TIME=$(($CMD_END_DATE - $CMD_START_DATE))
+    # Store an arbitrary threshold, in seconds.
+    CMD_NOTIFY_THRESHOLD=5
+    commands=(nvim tmux)
 
-        if [[ $CMD_ELAPSED_TIME -gt $CMD_NOTIFY_THRESHOLD ]]; then
-          if [[ ${commands[(r)b]} == b ]]; then
-            # Send a notification
-            notify-send "Task Finished" "\"$CMD_NAME\""
-          fi
-        fi
+    if [[ $CMD_ELAPSED_TIME -gt $CMD_NOTIFY_THRESHOLD ]]; then
+      if [[ ${commands[(r)b]} == b ]]; then
+        # Send a notification
+        notify-send "Task Finished" "\"$CMD_NAME\""
+      fi
     fi
+  fi
 }
 
 export NPM_PACKAGES="/home/caleb/.npm-packages"
@@ -113,7 +113,4 @@ export PATH="$NPM_PACKAGES/bin:$PATH"
 # command
 unset MANPATH  # delete if you already modified MANPATH elsewhere in your config
 export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
-
-
-source ~/.xsh
 
