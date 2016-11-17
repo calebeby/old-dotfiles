@@ -464,4 +464,5 @@ nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 
 " Close file
-nmap zz :up \| :bd<CR>
+map zz :b#\|bd#<CR>
+
