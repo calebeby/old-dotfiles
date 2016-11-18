@@ -244,6 +244,10 @@ nmap <C-t> :FZF<CR>
 vmap <C-t> <Esc><C-t>gv
 imap <C-t> <Esc><C-t>
 
+nmap <C-p> :FZF<CR>
+vmap <C-p> <Esc><C-p>gv
+imap <C-p> <Esc><C-p>
+
 " Save file
 nmap <c-s> :up<CR>
 vmap <c-s> <Esc>:up<CR>gv
