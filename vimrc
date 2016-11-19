@@ -5,7 +5,7 @@ filetype off
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'guns/xterm-color-table.vim'
+" Plug 'guns/xterm-color-table.vim'
 Plug 'ap/vim-buftabline'
 " Plug 'neomake/neomake'
 " Plug 'christoomey/vim-tmux-navigator'
@@ -13,7 +13,7 @@ Plug 'ap/vim-buftabline'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
 " Plug 'easymotion/vim-easymotion'
-Plug 'flazz/vim-colorschemes'
+" Plug 'flazz/vim-colorschemes'
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 " Plug 'junegunn/limelight.vim'
@@ -31,7 +31,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'Yggdroot/indentLine'
 
-Plug 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim', { 'for': 'py' }
 
 " Text objects
 Plug 'kana/vim-textobj-user'
@@ -239,11 +239,6 @@ set tabstop=2
 " Go to other buffers, even with unsaved work
 set hidden
 
-" Open a new file in a new buffer
-nmap <C-t> :FZF<CR>
-vmap <C-t> <Esc><C-t>gv
-imap <C-t> <Esc><C-t>
-
 " Save file
 nmap <c-s> :up<CR>
 vmap <c-s> <Esc>:up<CR>gv
@@ -433,20 +428,44 @@ set fillchars+=vert:│
 
 hi VertSplit ctermbg=NONE guibg=NONE
 
-nnoremap <tab>   :bnext<CR>
-nnoremap <s-tab> :bprev<CR>
-
 autocmd BufWinEnter,WinEnter term://* startinsert
+autocmd BufLeave term://* stopinsert
 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Open a new file in a new buffer
+nmap <C-t> :FZF<CR>
+vmap <C-t> <Esc><C-t>gv
+imap <C-t> <Esc><C-t>
+tmap <C-t> <c-e><C-t>
+
+function! s:buflist()
+  redir => ls
+  silent ls
+  redir END
+  return split(ls, '\n')
+endfunction
+
+function! s:bufopen(e)
+  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
+endfunction
+
+" C-space is NUL
+nmap <silent> <NUL> :call fzf#run({
+\   'source':  reverse(<sid>buflist()),
+\   'sink':    function('<sid>bufopen'),
+\   'options': '+m',
+\   'down':    len(<sid>buflist()) + 2
+\ })<CR>
+vmap <NUL> <Esc><C-space>gv
+imap <NUL> <Esc><C-space>
+tmap <NUL> <c-e><C-space><C-space>
+
 if has('nvim')
   tmap <c-e>   <c-\><c-n>
-  tmap <tab>   <c-e>:bnext<CR>
-  tmap <s-tab> <c-e>:bprev<CR>
   tmap : <c-e>:
   tmap <esc> :bd!<CR>
 
