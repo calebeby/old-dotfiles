@@ -6,7 +6,7 @@ filetype off
 call plug#begin('~/.vim/plugged')
 
 " Plug 'guns/xterm-color-table.vim'
-Plug 'ap/vim-buftabline'
+" Plug 'ap/vim-buftabline'
 " Plug 'neomake/neomake'
 " Plug 'christoomey/vim-tmux-navigator'
 " Plug 'ctrlpvim/ctrlp.vim'
@@ -14,6 +14,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
 " Plug 'easymotion/vim-easymotion'
 " Plug 'flazz/vim-colorschemes'
+" Plug 'vim-ctrlspace/vim-ctrlspace'
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 " Plug 'junegunn/limelight.vim'
@@ -30,6 +31,7 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'Yggdroot/indentLine'
+" Plug 'Shougo/denite.nvim'
 
 Plug 'davidhalter/jedi-vim', { 'for': 'py' }
 
@@ -54,6 +56,8 @@ Plug 'slm-lang/vim-slm', { 'for': 'slm' }
 " Add plugins to &runtimepath
 call plug#end()
 
+set path+=**
+
 " use syntax detection/highlighting
 syntax enable
 
@@ -69,6 +73,7 @@ au FocusGained,BufEnter * :silent! !
 " Color name (:help cterm-colors) or ANSI code
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = 240
+let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
 
 " let g:mucomplete#enable_auto_at_startup = 1
 
@@ -179,6 +184,7 @@ au FileType markdown map <Bar> vip :EasyAlign*<Bar><Enter>
 let g:ctrlp_show_hidden = 1
 
 if executable('rg')
+  let g:CtrlSpaceGlobCommand = 'rg --files --hidden ""'
   let g:ctrlp_user_command = 'rg --files --hidden %s""'
   let g:ctrlp_use_caching = 0
 elseif executable('ag')
@@ -410,7 +416,7 @@ if exists('$TMUX')
 endif
 
 " Show relative numbers
-set relativenumber
+set relativenumber number
 
 " run :sudo to add sudo permissions
 " NOTE: doesn't work in Neovim (August 2016)
@@ -453,28 +459,25 @@ function! s:bufopen(e)
   execute 'buffer' matchstr(a:e, '^[ 0-9]*')
 endfunction
 
-" C-space is NUL
-nmap <silent> <NUL> :call fzf#run({
-\   'source':  reverse(<sid>buflist()),
-\   'sink':    function('<sid>bufopen'),
-\   'options': '+m',
-\   'down':    len(<sid>buflist()) + 2
-\ })<CR>
-vmap <NUL> <Esc><C-space>gv
-imap <NUL> <Esc><C-space>
-tmap <NUL> <c-e><C-space><C-space>
+" " C-space is NUL
+" nmap <silent> <NUL> :call fzf#run({
+" \   'source':  reverse(<sid>buflist()),
+" \   'sink':    function('<sid>bufopen'),
+" \   'options': '+m',
+" \   'down':    len(<sid>buflist()) + 2
+" \ })<CR>
+" vmap <NUL> <Esc><C-space>gv
+" imap <NUL> <Esc><C-space>
+" tmap <NUL> <c-e><C-space><C-space>
 
 if has('nvim')
-  tmap <c-e>   <c-\><c-n>
-  tmap : <c-e>:
-  tmap <esc> :bd!<CR>
+  tmap <esc>   <c-\><c-n>
+  tmap <c-j> <esc><c-j>
+  tmap <c-k> <esc><c-k>
+  tmap <c-l> <esc><c-l>
+  tmap <c-h> <esc><c-h>
 
-  tmap <c-j> <c-e><c-j>
-  tmap <c-k> <c-e><c-k>
-  tmap <c-l> <c-e><c-l>
-  tmap <c-h> <c-e><c-h>
-
-  tmap <c-q> <c-e><c-q>
+  tmap <c-q> <esc><c-q>
   let test#strategy = "neovim"
 endif
 
@@ -484,6 +487,23 @@ nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 
+" nnoremap <C-p> :Denite file_rec/async<cr>
 " Close file
 map zz :up\|b#\|bd#<CR>
+let g:CtrlSpaceSymbols = { "File": "◯", "CTab": "▣", "Tabs": "▢" }
 
+nnoremap ; :
+
+" Move to the previous buffer with "gp"
+nnoremap gp :bp<CR>
+
+" Move to the next buffer with "gn"
+nnoremap gn :bn<CR>
+
+vmap < <gv
+vmap > >gv
+
+" set foldmethod=indent   
+" set foldnestmax=10
+" set nofoldenable
+" set foldlevel=2
