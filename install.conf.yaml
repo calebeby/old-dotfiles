@@ -49,6 +49,7 @@
         ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
       done
     stdout: true
+    stderr: true
   -
     command: git submodule update --init --recursive
     stdout: true
