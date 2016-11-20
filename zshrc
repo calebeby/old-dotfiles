@@ -1,6 +1,4 @@
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
-
 autoload zmv
 
 ZSH_THEME="calebeby"
@@ -12,8 +10,6 @@ ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
 
 #if [[ -n $SSH_CONNECTION ]]; then
 export EDITOR='nvim'

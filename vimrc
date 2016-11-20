@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'christoomey/vim-tmux-navigator'
 " Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'scrooloose/nerdtree'
 " Plug 'junegunn/fzf.vim'
 " Plug 'easymotion/vim-easymotion'
 " Plug 'flazz/vim-colorschemes'
@@ -424,7 +425,7 @@ set relativenumber number
 command! Sudo w !sudo tee %
 
 " clear search
-nnoremap <esc> :noh<return><esc>
+nnoremap <silent> <esc> :noh<return><esc>
 
 " split right and below instead of left and up
 set splitbelow
@@ -507,3 +508,5 @@ vmap > >gv
 " set foldnestmax=10
 " set nofoldenable
 " set foldlevel=2
+
+autocmd! FileType fzf tnoremap <buffer> <esc> <esc>:q<CR>
