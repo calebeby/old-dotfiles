@@ -1,4 +1,3 @@
-# Path to your oh-my-zsh installation.
 autoload zmv
 
 ZSH_THEME="calebeby"
@@ -19,7 +18,7 @@ export BROWSER='google-chrome-stable'
 #fi
 
 # Disable beep
-which xset && xset -b
+xset -b
 
 # Show contents of directory after cd-ing into it
 chpwd() {
@@ -35,7 +34,7 @@ SAVEHIST=20000
 
 # Aliases
 
-which hub && alias git='hub'
+alias git='hub'
 alias p="~/Podcasts/bashpodder.sh && ~/Podcasts/speedup.sh"
 alias t="~/Podcasts/transfer.sh"
 alias cat='fun () {highlight -O ansi -i $1 2>/dev/null || command cat $1;}; fun'
@@ -109,9 +108,6 @@ export PATH="$NPM_PACKAGES/bin:$PATH"
 # command
 unset MANPATH  # delete if you already modified MANPATH elsewhere in your config
 export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
-
-# source ~/.xsh
-
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'

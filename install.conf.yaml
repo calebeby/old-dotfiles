@@ -28,22 +28,27 @@
     ~/.bashrc: bashrc
     ~/.gemrc: gemrc
     ~/.npmrc: npmrc
-    ~/.zshrc: zshrc
     ~/.bash_aliases: .bash_aliases
     ~/.fonts: fonts
     ~/.gitignore: .gitignore
     ~/.gitconfig: .gitconfig
     ~/.xinitrc: xinitrc
     ~/.zprofile: zprofile
-    ~/.oh-my-zsh/custom/themes/calebeby.zsh-theme: calebeby.zsh-theme
     ~/.agignore: agignore
     ~/.tmux.conf: tmux.conf
     ~/.Xresources: Xresources
     ~/.emacs.d: emacs.d
     ~/.gtkrc-2.0: gtkrc-2.0
     ~/.gtk-bookmarks: gtk-bookmarks
+    ~/.zprezto: zprezto
 
 - shell:
+  -
+    command:
+      for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+        ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+      done
+    stdout: true
   -
     command: git submodule update --init --recursive
     stdout: true
