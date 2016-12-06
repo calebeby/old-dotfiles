@@ -35,6 +35,7 @@ Plug 'Yggdroot/indentLine'
 " Plug 'Shougo/denite.nvim'
 
 Plug 'davidhalter/jedi-vim', { 'for': 'py' }
+Plug 'fatih/vim-go', { 'for': 'go' }
 
 " Text objects
 Plug 'kana/vim-textobj-user'
@@ -509,4 +510,4 @@ vmap > >gv
 " set nofoldenable
 " set foldlevel=2
 
-autocmd! FileType fzf tnoremap <buffer> <esc> <esc>:q<CR>
+autocmd! FileType fzf tnoremap <buffer> <esc> <c-c><esc>:q<CR>

@@ -40,3 +40,6 @@
 [submodule "cmd-colors-solarized"]
 	path = cmd-colors-solarized
 	url = https://github.com/neilpa/cmd-colors-solarized
+[submodule "nuke"]
+	path = nuke
+	url = https://github.com/jstransformers/nuke

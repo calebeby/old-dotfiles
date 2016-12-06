@@ -1,6 +1,7 @@
-Session.vim
+**/Session.vim
 node_modules
 build/
 elm-stuff/
 plugged/
 Pictures
+**/jstransformer-*/yarn.lock
